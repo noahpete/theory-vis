@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="block-o" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #b00;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 12px;
+      }
+
+      .cls-2 {
+        fill: #666;
+      }
+    </style>
+  </defs>
+  <rect class="cls-2" width="496" height="496"/>
+  <path class="cls-1" d="m331,29h-171l-81,81v275l81,81h171l81.5-81V110.5l-81.5-81.5Zm-18.79,312.74l-21.49,21.49h-85.85s-21.07-21.08-21.07-21.08v-187.75l21.62-21.62h84.88l21.91,21.91v187.06Z"/>
+</svg>

@@ -1,0 +1,30 @@
+.theory__quote-wrapper {
+  display: flex;
+  padding: 4rem 8rem;
+}
+
+.theory__quote {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.theory__quote-text {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.theory__quote p {
+  text-align: center;
+  animation-name: fade-in;
+  animation-duration: 6s;
+}
+
+@keyframes fade-in {
+  0%   {opacity: 0%;}
+  75%  {opacity: 0%;}
+  100%  {opacity: 100%;}
+}

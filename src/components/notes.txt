@@ -1,0 +1,2 @@
+- keep running value of potential function(s)
+	- si = xi + yi
