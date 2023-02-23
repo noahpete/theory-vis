@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "title": "Finite Automata",
+    "description": "The simplest state-machine model is that of finite automata, which consist of a finite number of states and no additional storage. The machine is in only one state at a time, and a computational step involves reading a symbol from the input string and transitioning to another state (or the same one) based on what symbol is read. This model and slight variations of it are known by many different names, including finite automata, deterministic finite automata (DFA), finite-state automata, finite-state machine, finite acceptor, and others. We will use the term finite automata to refer to the model.",
+    "componentID": "FiniteAutomata",
+    "noteLink": "https://eecs376.github.io/notes/computability.html#finite-automata",
+    "wikiLink": "https://en.wikipedia.org/wiki/Deterministic_finite_automaton"
+  }
+]

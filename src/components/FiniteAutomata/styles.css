@@ -1,0 +1,88 @@
+.fa-wrapper {
+  width: 100%;
+  /* border: 1px solid salmon; */
+}
+
+.fa-canvas {
+  width: 720px;
+  height: 400px;
+
+  /* styling */
+  background-color: white;
+
+  /* alignment */
+  position: relative;
+  margin: 0.5em auto;
+
+  /* border: 1px solid skyblue; */
+}
+
+.fa-arrow0 {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  border: 2px solid salmon;
+  animation: all 2s linear;
+}
+
+.fa-hidden {
+  stroke-dashoffset: 0;
+}
+
+.fa-arrow0 {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  border: 2px solid salmon;
+}
+
+/* controls */
+.fa-controls-wrapper {
+  /* content alignment */
+  padding: 0.5em;
+
+  /* border: 1px solid slateblue; */
+}
+
+.fa-controls {
+  width: 100px;
+  padding: 0.2em;
+  margin: 0.5em auto;
+
+  /* border: 1px solid seagreen; */
+}
+
+/* state */
+.fa-state {
+  width: 60px;
+  height: 60px;
+
+  /* styling */
+  background-color: #f1f1f1;
+  border: 3px solid black;
+  border-radius: 50%;
+
+  /* alignment */
+  position: absolute;
+
+  /* content alignment */
+  display: flex;
+
+  /* border: 1px solid saddlebrown; */
+}
+
+.fa-state-wrapper {
+  width: auto;
+  height: 40px;
+
+  /* alignment */
+  margin: auto;
+
+  /* content styling */
+  display: inline-flex;
+
+  /* border: 1px solid salmon; */
+}
+
+.fa-state-wrapper p {
+  height: fit-content;
+  margin-top: 1em;
+}

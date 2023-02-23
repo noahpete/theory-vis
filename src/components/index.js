@@ -1,5 +1,7 @@
-export { default as Navbar } from './navbar/Navbar';
-export { default as Quote } from './quote/Quote';
-export { default as Categories } from './categories/Categories';
-export { default as Vis } from './vis/Vis';
-export { default as Footer } from './footer/Footer';
+export { default as Navbar } from "./Navbar/Navbar";
+export { default as Footer } from "./Footer/Footer";
+export { default as Button } from "./Button/Button";
+export { default as VisContainer } from "./VisContainer/VisContainer";
+export { default as PotentialMethod } from "./PotentialMethod/PotentialMethod";
+export { default as DiffieHellman } from "./DiffieHellman/DiffieHellman";
+export { default as FiniteAutomata } from "./FiniteAutomata/FiniteAutomata";

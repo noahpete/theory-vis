@@ -1,14 +1,14 @@
-import { Vis } from '../../components/index';
-import './Algorithms.css';
+import { VisContainer } from 'components';
+import './styles.css';
 
-import Visualizations from './visuals.json';
+import Visualizations from 'data/algorithms.json';
 
 const Algorithms = () => {
   return (
     <div className="algorithms-wrapper">
       {Visualizations.map(vis => {
         return(
-          <Vis key={vis.id} vis={ vis } />
+          <VisContainer key={vis.id} vis={ vis } />
         );
       })}
     </div>

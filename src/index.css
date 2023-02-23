@@ -7,3 +7,25 @@
   --color-two: #f1f1f1;
   --color-text: #000;
 }
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+}
+
+a {
+  color: var(--color-text);
+  font-family: var(--font-family);
+  text-decoration: none;
+}
+
+p, span, h1, h2, h3 {
+  color: var(--color-text);
+  font-family: var(--font-family);
+}

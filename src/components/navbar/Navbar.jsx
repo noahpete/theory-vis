@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
-import logo from '../../assets/tm-logo.png';
-import animation from '../../assets/tm-animated.gif';
-import './navbar.css';
+import logo from 'assets/tm-logo.png';
+import animation from 'assets/tm-animated.gif';
+import './styles.css';
 
 
 const Menu = () => (
   <>
-  <p><a href="/">problems</a></p>
-  <p><a href="/about">about</a></p>
-  <p><a href="#search">search</a></p>
+    <p><a href="/">problems</a></p>
+    <p><a href="/about">about</a></p>
+    <p><a href="#search">search</a></p>
   </>
 )
 

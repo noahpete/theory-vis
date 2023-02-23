@@ -1,4 +1,4 @@
-export { default as Home } from './home/Home';
-export { default as About } from './about/About';
-export { default as Algorithms } from './algorithms/Algorithms';
-export { default as Crypto } from './crypto/Crypto';
+export { default as Home } from './Home/Home';
+export { default as Algorithms } from './Algorithms/Algorithms';
+export { default as Cryptography } from './Cryptography/Cryptography';
+export { default as Computability } from './Computability/Computability';
