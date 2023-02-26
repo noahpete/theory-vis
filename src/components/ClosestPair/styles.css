@@ -1,0 +1,72 @@
+.closest-pair {
+  width: 100%;
+
+  /* content alignment */
+  display: flex;
+  flex-direction: column;
+}
+
+.cp-wrapper {
+  width: 100%;
+
+  /* alignment */
+  flex: 4;
+
+  /* content alignment */
+  display: flex;
+  padding: 1em;
+
+  border: 1px solid salmon;
+}
+
+/* pseudocode */
+.cp-pseudocode {
+  /* style */
+  background-color: white;
+
+  /* alignment */
+  margin: auto;
+
+  /* content alignment */
+  padding: 0.5em;
+
+  /* border: 1px solid sandybrown; */
+}
+
+/* canvas */
+.cp-canvas {
+  width: 320px;
+  height: 320px;
+
+  /* styling */
+  background-color: white;
+
+  /* alignment */
+  margin: auto;
+
+  /* content alignment */
+  position: relative;
+
+  border: 1px solid slateblue;
+}
+
+/* controls */
+.cp-controls {
+  flex: 1;
+
+  border: 1px solid seagreen;
+}
+
+/* dot */
+.dot {
+  width: 10px;
+  height: 10px;
+
+  /* styling */
+  border-radius: 50%;
+
+  /* alignment */
+  position: absolute;
+
+  /* border: 1px solid seagreen; */
+}
