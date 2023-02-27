@@ -1,13 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, Algorithms, Cryptography, Computability } from "pages";
 import { Navbar, Footer } from "./components";
 import "./index.css";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -17,7 +16,7 @@ function App() {
         <Route path="/cryptography" element={<Cryptography />} />
       </Routes>
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 }
 
