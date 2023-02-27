@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, Algorithms, Cryptography, Computability } from "pages";
+import { Home, Algorithms, Cryptography, Computability } from "./pages";
 import { Navbar, Footer } from "./components";
 import "./index.css";
 
