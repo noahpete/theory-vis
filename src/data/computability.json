@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Finite Automata",
-    "description": "The simplest state-machine model is that of finite automata, which consist of a finite number of states and no additional storage. The machine is in only one state at a time, and a computational step involves reading a symbol from the input string and transitioning to another state (or the same one) based on what symbol is read. This model and slight variations of it are known by many different names, including finite automata, deterministic finite automata (DFA), finite-state automata, finite-state machine, finite acceptor, and others. We will use the term finite automata to refer to the model.",
+    "description": "A finite automaton (also known as a deterministic finite automaton or DFA) is a finite-state machine that will either process a string of symbols and accept (by outputting a 1 or finishing on the 'accept' state, for example) or reject (by outputting a 0 or by failing to finish on an 'accept' state). To the right is a state diagram of a finite automaton that can take either a string of 'a's and 'b's as input. If this string is exactly 'abba', the DFA shown will accept. Otherwise, it will reject. We can start on the initial state, q0.",
     "componentID": "FiniteAutomata",
     "noteLink": "https://eecs376.github.io/notes/computability.html#finite-automata",
     "wikiLink": "https://en.wikipedia.org/wiki/Deterministic_finite_automaton"

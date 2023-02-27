@@ -16,7 +16,7 @@
   display: flex;
   padding: 1em;
 
-  border: 1px solid salmon;
+  /* border: 1px solid salmon; */
 }
 
 /* pseudocode */
@@ -47,14 +47,19 @@
   /* content alignment */
   position: relative;
 
-  border: 1px solid slateblue;
+  /* border: 1px solid slateblue; */
 }
 
 /* controls */
 .cp-controls {
   flex: 1;
 
-  border: 1px solid seagreen;
+  /* border: 1px solid seagreen; */
+}
+
+.cp-buttons-wrapper {
+  width: auto;
+  margin: auto;
 }
 
 /* dot */

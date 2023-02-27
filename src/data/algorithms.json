@@ -10,25 +10,9 @@
   {
     "id": 2,
     "title": "Closest Pair Problem",
-    "description": "In the closest pair problem, we are provided n points in d-dimensional space, and the goal is to find the closest pair of points. Often encountered in the field of computational geometry, this problem was one of the first geometric problems whose computational complexity was systematically studied. A naive solution to this problem would attempt to evaluate every pair of points, which has a O(n^2) complexity. Attempting a divide and conquer approach where <fill in>. However, a more efficient divide and conquer algorithm can be utilized, where divisions occur <when?>, bringing the complexity down to O(n log n).",
+    "description": "In the closest pair problem, we are provided n points in d-dimensional space, and the goal is to find the closest pair of points. Often encountered in the field of computational geometry, this problem was one of the first geometric problems whose computational complexity was systematically studied. A naive solution to this problem would attempt to evaluate every pair of points, which has a O(n^2) complexity. However, a more efficient divide and conquer algorithm can be utilized, and as the animation demonstrates, clever algorithmic strategies can bring the complexity down to O(n log n).",
     "componentID": "ClosestPair",
     "noteLink": "https://en.wikipedia.org/wiki/Closest_pair_of_points_problem",
     "wikiLink": "https://eecs376.github.io/notes/algorithms.html#the-closest-pair-problem"
-  },
-  {
-    "id": 3,
-    "title": "Greatest Common Divisor Problem",
-    "description": "The greatest common divisor problem is a straightforward computational problem where we are interested in computing the largest natural number z that divides both x and y.",
-    "componentID": "GCD",
-    "noteLink": "https://eecs376.github.io/notes/algorithms.html#the-first-algorithm",
-    "wikiLink": "https://en.wikipedia.org/wiki/Euclidean_algorithm"
-  },
-  {
-    "id": 4,
-    "title": "Minimum Spanning Tree Problem",
-    "description": "",
-    "componentID": "MST",
-    "noteLink": "https://en.wikipedia.org/wiki/Minimum_spanning_tree",
-    "wikiLink": "https://eecs376.github.io/notes/algorithms.html#greedy-algorithms"
   }
 ]

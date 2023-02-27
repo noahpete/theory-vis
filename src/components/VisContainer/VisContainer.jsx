@@ -8,7 +8,6 @@ import "./styles.css";
 
 const VisContainer = ({ vis }) => {
   const ComponentMapper = (componentID) => {
-    console.log(componentID);
     switch (componentID) {
       case "PotentialMethod":
         return <PotentialMethod />;

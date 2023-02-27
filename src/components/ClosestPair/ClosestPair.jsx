@@ -85,8 +85,10 @@ class ClosestPair extends Component {
           <div className="cp-canvas">{dots}</div>
         </div>
         <div className="cp-controls">
-          <button onClick={() => this.generateRandomDots()}>Make Dots</button>
-          <button>NaiveClosestPair</button>
+          <div className="cp-buttons-wrapper">
+            <button onClick={() => this.generateRandomDots()}>Make Dots</button>
+            <button>NaiveClosestPair</button>
+          </div>
         </div>
       </div>
     );
