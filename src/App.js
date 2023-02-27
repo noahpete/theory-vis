@@ -1,22 +1,24 @@
-import React from 'react'
-import { Home, About, Algorithms, Crypto } from './pages';
-import { Navbar, Footer } from './components';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home, Algorithms, Cryptography, Computability } from "pages";
+import { Navbar, Footer } from "./components";
+import "./index.css";
 
-const App = () => {
+function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        {/* <Route path="/about" element={<About />} /> */}
         <Route path="/algorithms" element={<Algorithms />} />
-        <Route path="/cryptography" element={<Crypto />} />
+        <Route path="/computability" element={<Computability />} />
+        <Route path="/cryptography" element={<Cryptography />} />
       </Routes>
       <Footer />
     </Router>
   );
 }
- 
+
 export default App;

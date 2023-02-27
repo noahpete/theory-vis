@@ -1,6 +1,7 @@
-import { Quote, Categories } from '../../components';
+import Categories from './Categories';
+import Quote from './Quote';
 
-import categories from './categories.json';
+import categories from 'data/categories.json';
 
 const Home = () => {
   return (
