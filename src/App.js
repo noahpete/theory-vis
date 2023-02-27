@@ -1,19 +1,19 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { Home, Algorithms, Cryptography, Computability } from "./pages";
 import { Navbar, Footer } from "./components";
 import "./index.css";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/theory-vis">
       <Navbar />
       <Routes>
-        <Route path="/theory-vis" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         {/* <Route path="/theory-vis/about" element={<About />} /> */}
-        <Route path="/theory-vis/algorithms" element={<Algorithms />} />
-        <Route path="/theory-vis/computability" element={<Computability />} />
-        <Route path="/theory-vis/cryptography" element={<Cryptography />} />
+        <Route exact path="/algorithms" element={<Algorithms />} />
+        <Route exact path="/computability" element={<Computability />} />
+        <Route exact path="/cryptography" element={<Cryptography />} />
       </Routes>
       <Footer />
     </Router>
