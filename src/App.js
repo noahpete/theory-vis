@@ -9,11 +9,11 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/about" element={<About />} /> */}
-        <Route path="/algorithms" element={<Algorithms />} />
-        <Route path="/computability" element={<Computability />} />
-        <Route path="/cryptography" element={<Cryptography />} />
+        <Route path="/theory-vis" element={<Home />} />
+        {/* <Route path="/theory-vis/about" element={<About />} /> */}
+        <Route path="/theory-vis/algorithms" element={<Algorithms />} />
+        <Route path="/theory-vis/computability" element={<Computability />} />
+        <Route path="/theory-vis/cryptography" element={<Cryptography />} />
       </Routes>
       <Footer />
     </Router>
