@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import logo from "assets/tm-logo.png";
 import animation from "assets/tm-animated.gif";
@@ -7,13 +8,13 @@ import "./styles.css";
 const Menu = () => (
   <>
     <p>
-      <a href="/theory-vis">problems</a>
+      <Link to="/">problems</Link>
     </p>
     <p>
-      <a href="/theory-vis/about">about</a>
+      <Link to="/about">about</Link>
     </p>
     <p>
-      <a href="#search">search</a>
+      <Link to="#search">search</Link>
     </p>
   </>
 );
@@ -26,27 +27,27 @@ const Navbar = () => {
       {/* logo and links */}
       <div className="theory__navbar-links">
         <div className="theory__navbar-links-logo">
-          <a href="/theory-vis">
+          <Link to="/">
             <img
               src={logo}
               className="theory__navbar-links-logo-static"
               alt="logo"
             />
-          </a>
-          <a href="/theory-vis">
+          </Link>
+          <Link to="/">
             <img
               src={animation}
               className="theory__navbar-links-logo-active"
               alt="logo"
             />
-          </a>
-          <a href="/theory-vis">
+          </Link>
+          <Link to="/">
             <h1>
               Theory
               <br />
               Vis
             </h1>
-          </a>
+          </Link>
         </div>
         <div className="theory__navbar-links-container">
           <Menu />

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Stack, Box } from "@mui/material";
 import "./styles.css";
 
@@ -17,15 +18,11 @@ const Categories = ({ categories }) => {
               category.status === "comingsoon" ? " comingsoon" : ""
             }`}
           >
-            <a
-              href={
-                category.status === "comingsoon"
-                  ? "/theory-vis"
-                  : `/theory-vis${category.link}`
-              }
+            <Link
+              to={category.status === "comingsoon" ? "/" : `${category.link}`}
             >
               <h2>{category.title}</h2>
-            </a>
+            </Link>
             <p>{category.desc}</p>
             <p>
               {category.status === "inprogress"
