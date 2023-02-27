@@ -1,24 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Home, Algorithms, Cryptography, Computability } from 'pages';
-import { Navbar, Footer } from './components';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
 
-const App = () => {
-  return (
-    <Router>
-      <Navbar />
-        <Routes>
-            <Route path="/" element={<Home />} />
-            {/* <Route path="/about" element={<About />} /> */}
-            <Route path="/algorithms" element={<Algorithms />} />
-            <Route path="/computability" element={<Computability />} />
-            <Route path="/cryptography" element={<Cryptography />} />
-        </Routes>
-      <Footer />
-    </Router>
-  );
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
