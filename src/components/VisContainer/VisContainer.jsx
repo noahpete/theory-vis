@@ -1,8 +1,9 @@
 import {
   PotentialMethod,
+  ClosestPair,
+  MergeSort,
   DiffieHellman,
   FiniteAutomata,
-  ClosestPair,
 } from "components";
 import "./styles.css";
 
@@ -17,6 +18,8 @@ const VisContainer = ({ vis }) => {
         return <FiniteAutomata />;
       case "ClosestPair":
         return <ClosestPair />;
+      case "MergeSort":
+        return <MergeSort />;
       default:
         return <div>Under construction!</div>;
     }
