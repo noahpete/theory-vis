@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Pseudocode, Bar } from "components";
 import "./styles.css";
 
 class MergeSort extends Component {
@@ -30,11 +31,24 @@ class MergeSort extends Component {
       temp.push(this.generateRandomNumber(50, 200));
     }
 
-    console.log(temp);
+    this.setState({
+      array: temp,
+      arraySteps: [temp],
+    });
   }
 
   render() {
-    return <div className="ms-wrapper"></div>;
+    let bars = this.state.array.map((val, index) => {
+      return (
+        <Bar
+          key={index}
+          index={index}
+          length={val}
+          color={this.state.colorKey[index]}
+        />
+      );
+    });
+    return <div className="ms-wrapper">{bars}</div>;
   }
 }
 
