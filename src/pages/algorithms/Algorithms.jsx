@@ -7,7 +7,8 @@ const Algorithms = () => {
   return (
     <div className="algorithms-wrapper">
       {Visualizations.map((vis) => {
-        return <VisContainer key={vis.id} vis={vis} />;
+        if (vis.status === "hidden") return null;
+        else return <VisContainer key={vis.id} vis={vis} />;
       })}
     </div>
   );

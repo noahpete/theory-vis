@@ -1,22 +1,17 @@
-import { VisContainer } from 'components';
-import './styles.css';
+import { VisContainer } from "components";
+import "./styles.css";
 
-import Visualizations from 'data/cryptography.json';
-
+import Visualizations from "data/cryptography.json";
 
 const Cryptography = () => {
   return (
     <div className="crypto-wrapper">
-      {Visualizations.map(vis => {
-        return(
-          <VisContainer
-            key={vis.id}
-            vis={ vis }
-          />
-        );
+      {Visualizations.map((vis) => {
+        if (vis.status === "hidden") return null;
+        else return <VisContainer key={vis.id} vis={vis} />;
       })}
     </div>
   );
-}
+};
 
 export default Cryptography;

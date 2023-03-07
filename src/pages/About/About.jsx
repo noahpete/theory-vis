@@ -17,9 +17,8 @@ const About = () => {
             rel="noreferrer"
           >
             notes written by Dr. Amir Kamil
-          </a>{" "}
-          Visualizations' code, design, and assets created by Noah Peters
-          (email: nope@umich.edu).
+          </a>
+          . Visualizations' code, design, and assets created by Noah Peters.
         </p>
       </div>
     </div>
