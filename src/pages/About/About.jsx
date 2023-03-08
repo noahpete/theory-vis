@@ -12,7 +12,7 @@ const About = () => {
           influence from EECS 376: Foundations of Computer Science at the
           University of Michigan, specifically the{" "}
           <a
-            href="https://eecs376github.io/notes/"
+            href="https://eecs376.github.io/notes/"
             target="_blank"
             rel="noreferrer"
           >
