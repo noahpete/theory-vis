@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/theory-vis/static/css/main.e20d6346.css",
-    "main.js": "/theory-vis/static/js/main.154a1d17.js",
+    "main.css": "/theory-vis/static/css/main.a3c4f213.css",
+    "main.js": "/theory-vis/static/js/main.bc2b6528.js",
     "static/media/tm-animated.gif": "/theory-vis/static/media/tm-animated.021df145fe9d8c9155fa.gif",
     "static/media/tm-logo.png": "/theory-vis/static/media/tm-logo.87973d0d86e104b992eb.png",
-    "static/media/fa-arrow-6.svg": "/theory-vis/static/media/fa-arrow-6.f6b180d52e8791bb390f8f3c7e5921ba.svg",
-    "static/media/fa-arrow-3.svg": "/theory-vis/static/media/fa-arrow-3.f9ecf27e374d996c79188c9c0a4bce07.svg",
-    "static/media/fa-arrow-1.svg": "/theory-vis/static/media/fa-arrow-1.542cbd22f0ac1008f5df7fdab98b5c39.svg",
-    "static/media/fa-arrow-2.svg": "/theory-vis/static/media/fa-arrow-2.867f73177960e297e9f7f00f28f8dbeb.svg",
-    "static/media/fa-arrow-5.svg": "/theory-vis/static/media/fa-arrow-5.3b6d5920b3ccc817f4274fe772ecf749.svg",
+    "static/media/fa-arrow-6.svg": "/theory-vis/static/media/fa-arrow-6.9473bd07ac391f8e8c341b24d6a8ab2e.svg",
+    "static/media/fa-arrow-3.svg": "/theory-vis/static/media/fa-arrow-3.994bc3c01954ec183a445393980d23da.svg",
+    "static/media/fa-arrow-1.svg": "/theory-vis/static/media/fa-arrow-1.d620d9dcbbb05dbe87b66d269eac6e31.svg",
+    "static/media/fa-arrow-2.svg": "/theory-vis/static/media/fa-arrow-2.f4e236812f93e1b907a8c3c4d4ad4f6a.svg",
+    "static/media/fa-arrow-5.svg": "/theory-vis/static/media/fa-arrow-5.58836ca741cc2495b952f3c415af7670.svg",
     "index.html": "/theory-vis/index.html",
-    "static/media/fa-arrow-4.svg": "/theory-vis/static/media/fa-arrow-4.bb8725edf87e083a09235f74075ab1a4.svg",
-    "static/media/m-card.svg": "/theory-vis/static/media/m-card.12801c2fbc83672855b30a8b9dc01de0.svg",
-    "static/media/o-card.svg": "/theory-vis/static/media/o-card.66088fa79742dc31e33d29638a41038b.svg",
-    "main.e20d6346.css.map": "/theory-vis/static/css/main.e20d6346.css.map",
-    "main.154a1d17.js.map": "/theory-vis/static/js/main.154a1d17.js.map"
+    "static/media/fa-arrow-4.svg": "/theory-vis/static/media/fa-arrow-4.96d79f93545d446fa12b46487ee1c31f.svg",
+    "static/media/m-card.svg": "/theory-vis/static/media/m-card.535867ecb7a5248e5c4f582a9147747a.svg",
+    "static/media/o-card.svg": "/theory-vis/static/media/o-card.3639f25dc6f35ae0291fb5f28203c714.svg",
+    "main.a3c4f213.css.map": "/theory-vis/static/css/main.a3c4f213.css.map",
+    "main.bc2b6528.js.map": "/theory-vis/static/js/main.bc2b6528.js.map"
   },
   "entrypoints": [
-    "static/css/main.e20d6346.css",
-    "static/js/main.154a1d17.js"
+    "static/css/main.a3c4f213.css",
+    "static/js/main.bc2b6528.js"
   ]
 }
