@@ -17,12 +17,16 @@ const Categories = ({ categories }) => {
             className={`category${
               category.status === "comingsoon" ? " comingsoon" : ""
             }`}
+            onClick={() => {
+              if (category.status !== "comingsoon") {
+                window.location.href = `/theory-vis/#${category.link}`;
+              }
+            }}
+            style={{
+              cursor: category.status === "comingsoon" ? "default" : "pointer",
+            }}
           >
-            <Link
-              to={category.status === "comingsoon" ? "/" : `${category.link}`}
-            >
-              <h2>{category.title}</h2>
-            </Link>
+            <h2>{category.title}</h2>
             <p>{category.desc}</p>
             <p>
               {category.status === "inprogress"

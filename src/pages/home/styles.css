@@ -14,6 +14,7 @@
   padding: 1rem;
   margin: 0.2rem;
   background: var(--color-two);
+  border: 1px solid black;
 }
 
 .comingsoon {
