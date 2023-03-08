@@ -4,6 +4,7 @@
   height: 500px;
   margin: 1rem auto;
   background: var(--color-two);
+  border: 1px solid black;
   transition: all 1s ease;
 }
 

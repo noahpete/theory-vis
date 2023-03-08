@@ -102,10 +102,6 @@
   .theory__navbar {
     padding: 2rem 6rem;
   }
-
-  /* .theory__navbar-menu {
-    right: 2rem;
-  } */
 }
 
 @media screen and (max-width: 550px) {
