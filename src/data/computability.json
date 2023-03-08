@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "title": "Finite Automata",
+    "description": "A finite automaton (also known as a deterministic finite automaton or DFA) is a finite-state machine that will either process a string of symbols and accept (by outputting a 1 or finishing on the 'accept' state, for example) or reject (by outputting a 0 or by failing to finish on an 'accept' state). To the right is a state diagram of a finite automaton that can take either a string of 'a's and 'b's as input. If this string is exactly 'abba', the DFA shown will accept. Otherwise, it will reject. We can start on the initial state, q0.",
+    "componentID": "FiniteAutomata",
+    "status": "hidden",
+    "noteLink": "https://eecs376.github.io/notes/computability.html#finite-automata",
+    "wikiLink": "https://en.wikipedia.org/wiki/Deterministic_finite_automaton"
+  }
+]

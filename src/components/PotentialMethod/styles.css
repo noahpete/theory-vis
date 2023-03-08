@@ -1,0 +1,167 @@
+.display-and-controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.board-wrapper {
+  display: flex;
+  flex: 3;
+  padding: 1em;
+}
+
+.controls-wrapper {
+  flex: 1;
+}
+
+/* Board */
+.board {
+  /* alignment */
+  margin: auto;
+  padding: 2px;
+
+  /* content alignment */
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: auto;
+}
+
+/* Legend */
+.legend-wrapper {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+
+.legend {
+  background-color: #fff;
+  width: 90%;
+  height: 180px;
+
+  /* alignment */
+  margin: auto;
+
+  /* content alignment */
+  text-align: center;
+}
+
+.legend h2 {
+  padding: 10px;
+  font-size: large;
+}
+
+.legend p {
+  display: flex;
+  align-items: center;
+}
+
+.stats {
+  width: 80%;
+  margin: auto;
+}
+
+.stat-row {
+  width: 90px;
+  padding: auto;
+  margin: auto;
+  display: flex;
+}
+
+.card-icon {
+  width: 32px;
+  margin: 2px;
+  margin-right: 6px;
+}
+
+/* Card */
+.card {
+  margin: auto;
+  position: relative;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+  border: 2px solid #fff;
+}
+
+.card .front {
+  transform: rotateY(90deg);
+  transition: all ease-in 200ms;
+  position: absolute;
+}
+
+.flipped .front {
+  transform: rotateY(0deg);
+  transition-delay: 200ms;
+}
+
+.card .back {
+  transition: all ease-in 200ms;
+  transition-delay: 200ms;
+}
+
+.flipped .back {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}
+
+/* Controls */
+.controls {
+  width: 320px;
+
+  /* alignment */
+  margin: auto auto auto 5.5em;
+
+  /* content alignment */
+  display: flex;
+  /* flex-direction: column; */
+  /* border: 1px solid salmon; */
+}
+
+/* ensure number arrows always shown */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+}
+
+.controls input {
+  width: 4rem;
+  text-align: center;
+  display: block;
+
+  margin: auto;
+
+  font-family: "IBM Plex Mono", sans-serif;
+  font-size: large;
+
+  background-color: #fff;
+  border: 1px solid gainsboro;
+}
+
+.controls button {
+  width: 8rem;
+
+  font-size: large;
+  font-family: "IBM Plex Mono", sans-serif;
+  padding: 4px;
+
+  background-color: #fff;
+  border: 1px solid gainsboro;
+}
+
+.controls button:hover {
+  cursor: pointer;
+  background-color: gainsboro;
+}
