@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/theory-vis/static/css/main.56971357.css",
-    "main.js": "/theory-vis/static/js/main.85db4efe.js",
+    "main.css": "/theory-vis/static/css/main.bca97cf0.css",
+    "main.js": "/theory-vis/static/js/main.6c5cd8dd.js",
     "static/media/tm-animated.gif": "/theory-vis/static/media/tm-animated.021df145fe9d8c9155fa.gif",
     "static/media/tm-logo.png": "/theory-vis/static/media/tm-logo.87973d0d86e104b992eb.png",
     "static/media/fa-arrow-6.svg": "/theory-vis/static/media/fa-arrow-6.9473bd07ac391f8e8c341b24d6a8ab2e.svg",
@@ -13,11 +13,11 @@
     "static/media/fa-arrow-4.svg": "/theory-vis/static/media/fa-arrow-4.96d79f93545d446fa12b46487ee1c31f.svg",
     "static/media/m-card.svg": "/theory-vis/static/media/m-card.535867ecb7a5248e5c4f582a9147747a.svg",
     "static/media/o-card.svg": "/theory-vis/static/media/o-card.3639f25dc6f35ae0291fb5f28203c714.svg",
-    "main.56971357.css.map": "/theory-vis/static/css/main.56971357.css.map",
-    "main.85db4efe.js.map": "/theory-vis/static/js/main.85db4efe.js.map"
+    "main.bca97cf0.css.map": "/theory-vis/static/css/main.bca97cf0.css.map",
+    "main.6c5cd8dd.js.map": "/theory-vis/static/js/main.6c5cd8dd.js.map"
   },
   "entrypoints": [
-    "static/css/main.56971357.css",
-    "static/js/main.85db4efe.js"
+    "static/css/main.bca97cf0.css",
+    "static/js/main.6c5cd8dd.js"
   ]
 }
