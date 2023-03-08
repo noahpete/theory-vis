@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 2rem 8rem;
+  transition: all 1s ease;
 }
 
 .theory__navbar-links {
@@ -101,9 +102,9 @@
     padding: 2rem 6rem;
   }
 
-  .theory__navbar-menu {
-    right: 6rem;
-  }
+  /* .theory__navbar-menu {
+    right: 2rem;
+  } */
 }
 
 @media screen and (max-width: 550px) {
@@ -111,7 +112,16 @@
     padding: 2rem;
   }
 
+  .theory__navbar-links {
+    transform: scale(70%) translateX(-44px);
+  }
+
   .theory__navbar-menu-container {
     top: 32px;
+  }
+
+  .theory__navbar-menu {
+    right: 2rem;
+    transform: translateY(-4px);
   }
 }

@@ -34,6 +34,11 @@
     flex-basis: 49%;
     margin: 0.2rem 0.1rem;
   }
+
+  .theory__quote {
+    height: 160px !important;
+    margin-bottom: -2rem !important;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -44,6 +49,28 @@
   .category {
     flex-basis: 100%;
     margin: 0.2rem 0.1rem;
+  }
+
+  .theory__quote-wrapper {
+    padding: 2rem !important;
+  }
+
+  .theory__quote-text {
+    font-size: 1.6em !important;
+  }
+
+  .theory__quote {
+    margin-bottom: -2.4rem !important;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .theory__quote-text {
+    font-size: 1.2em !important;
+  }
+
+  .theory__quote {
+    margin-bottom: -4rem !important;
   }
 }
 
@@ -56,9 +83,10 @@
 .theory__quote {
   flex: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 120px;
+  /* border: 1px solid salmon; */
 }
 
 .theory__quote-text {
@@ -74,7 +102,13 @@
 }
 
 @keyframes fade-in {
-  0%   {opacity: 0%;}
-  75%  {opacity: 0%;}
-  100%  {opacity: 100%;}
+  0% {
+    opacity: 0%;
+  }
+  75% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
 }

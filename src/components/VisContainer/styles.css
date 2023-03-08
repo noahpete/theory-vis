@@ -4,6 +4,7 @@
   height: 500px;
   margin: 1rem auto;
   background: var(--color-two);
+  transition: all 1s ease;
 }
 
 .info-panel {
@@ -47,4 +48,10 @@
 
   /* content alignment */
   display: flex;
+}
+
+@media screen and (max-width: 700px) {
+  .vis-wrapper {
+    transform: scale(70%) translate(-200px, -100px);
+  }
 }
