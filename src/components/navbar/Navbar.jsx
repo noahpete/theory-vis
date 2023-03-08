@@ -6,7 +6,7 @@ import animation from "assets/tm-animated.gif";
 import "./styles.css";
 
 const Menu = () => (
-  <div className="navbar_dropdown">
+  <>
     <p>
       <Link to="/">problems</Link>
     </p>
@@ -16,7 +16,7 @@ const Menu = () => (
     <p>
       <Link to="#search">search</Link>
     </p>
-  </div>
+  </>
 );
 
 const Navbar = () => {
