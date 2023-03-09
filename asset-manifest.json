@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/theory-vis/static/css/main.6cc15d36.css",
-    "main.js": "/theory-vis/static/js/main.87a92c73.js",
+    "main.js": "/theory-vis/static/js/main.7efdc0ff.js",
     "static/media/tm-animated.gif": "/theory-vis/static/media/tm-animated.021df145fe9d8c9155fa.gif",
     "static/media/tm-logo.png": "/theory-vis/static/media/tm-logo.87973d0d86e104b992eb.png",
     "static/media/fa-arrow-6.svg": "/theory-vis/static/media/fa-arrow-6.9473bd07ac391f8e8c341b24d6a8ab2e.svg",
@@ -14,10 +14,10 @@
     "static/media/m-card.svg": "/theory-vis/static/media/m-card.535867ecb7a5248e5c4f582a9147747a.svg",
     "static/media/o-card.svg": "/theory-vis/static/media/o-card.3639f25dc6f35ae0291fb5f28203c714.svg",
     "main.6cc15d36.css.map": "/theory-vis/static/css/main.6cc15d36.css.map",
-    "main.87a92c73.js.map": "/theory-vis/static/js/main.87a92c73.js.map"
+    "main.7efdc0ff.js.map": "/theory-vis/static/js/main.7efdc0ff.js.map"
   },
   "entrypoints": [
     "static/css/main.6cc15d36.css",
-    "static/js/main.87a92c73.js"
+    "static/js/main.7efdc0ff.js"
   ]
 }
