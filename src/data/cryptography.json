@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Diffie-Hellman Key Exchange",
-    "description": "When establishing a secure connection over some sort of communication channel, many encryption schemes will require that one key is shared between the two parties; schemes such as these are considered 'symmetric'. However, a problem arises when trying to share this key to both parties. If we haven't established a secure channel yet, how can the two parties share the key securely? The Diffie-Hellman key exchange protocol addresses this issue so that secure key exchanges can occur. Once a key is established between the two parties, each party can use it to securely transmit messages in the future.",
+    "description": "When establishing a secure connection over some sort of communication channel, many encryption schemes will require that one key is shared between the two parties. However, a problem arises when trying to share this key to both parties. If we haven't established a secure channel yet, how can the two parties share the key securely? The Diffie-Hellman key exchange protocol addresses this issue so that secure key exchanges can occur. Once a key is established between the two parties, each party can use it to securely transmit messages in the future.",
     "componentID": "DiffieHellman",
     "status": "live",
     "noteLink": "https://eecs376.github.io/notes/cryptography.html#diffie-hellman-key-exchange",
