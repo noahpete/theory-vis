@@ -1,0 +1,80 @@
+:root {
+  --skew-angle: 5deg;
+  --animation-speed: 0.2s;
+}
+
+.euclid {
+  width: 100%;
+
+  /* content alignment */
+  display: flex;
+  flex-direction: column;
+
+  /* border: 1px solid greenyellow; */
+}
+
+.euc-wrapper {
+  width: 100%;
+
+  /* alignment */
+  flex: 4;
+
+  /* content alignment */
+  display: flex;
+  padding: 1em;
+
+  border: 1px solid salmon;
+}
+
+/* pseudocode */
+.euc-pseudocode {
+  /* style */
+  background-color: white;
+
+  /* alignment */
+  margin: auto;
+
+  /* content alignment */
+  padding: 0.5em;
+
+  /* border: 1px solid sandybrown; */
+}
+
+/* canvas */
+.euc-canvas {
+  /* styling */
+  background-color: white;
+
+  /* alignment */
+  margin: auto;
+
+  /* content alignment */
+  display: flex;
+
+  transition: var(--animation-speed) all ease;
+
+  border: 1px solid slateblue;
+}
+
+.euc-bars-wrapper {
+  /* alignment */
+  margin: auto;
+  margin-bottom: 20%;
+
+  /* content alignment */
+  display: flex;
+  align-items: flex-end;
+
+  /* border: 1px solid slateblue; */
+}
+
+/* controls */
+.euc-controls {
+  flex: 1;
+  padding: 0.3em;
+  border: 1px solid seagreen;
+}
+
+.euc-controls button {
+  margin: 0.3em;
+}

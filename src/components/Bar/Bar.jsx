@@ -4,7 +4,7 @@ import "./styles.css";
 
 const Bar = ({
   id,
-  width,
+  width = 50,
   value,
   valueVar = "",
   showValue = true,
@@ -16,13 +16,14 @@ const Bar = ({
       className="bar"
       id={`bar-${id}`}
       style={{
+        backgroundColor: color,
         width: `${width}px`,
         height: `${value}px`,
-        margin: "0 1px",
+        margin: "0 4px",
       }}
     >
       <div className="bar-value" style={{ marginTop: `${value + 4}px` }}>
-        {valueVar === "" ? "" : `${valueVar} = `}
+        {valueVar === "" ? "" : showValue ? `${valueVar} = ` : ""}
         {showValue ? value : ""}
       </div>
       <div className="bar-val-controls"></div>

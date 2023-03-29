@@ -1,8 +1,7 @@
 .bar {
   /* alignment */
-  border: 1px solid salmon;
 
-  transition: var(--animation-speed) all ease;
+  transition: 0.2s all ease;
 }
 
 .bar-fade {
