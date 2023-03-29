@@ -4,6 +4,7 @@ import {
   MergeSort,
   DiffieHellman,
   FiniteAutomata,
+  Euclid,
 } from "components";
 import "./styles.css";
 
@@ -18,8 +19,10 @@ const VisContainer = ({ vis }) => {
         return <FiniteAutomata />;
       case "ClosestPair":
         return <ClosestPair />;
-      // case "MergeSort":
-      //   return <MergeSort />;
+      case "Euclid":
+        return <Euclid />;
+      case "MergeSort":
+        return <MergeSort />;
       default:
         return null;
     }

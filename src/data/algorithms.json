@@ -25,5 +25,14 @@
     "status": "hidden",
     "noteLink": "https://eecs376.github.io/notes/algorithms.html#divide-and-conquer",
     "wikiLink": "https://en.wikipedia.org/wiki/Merge_sort"
+  },
+  {
+    "id": 4,
+    "title": "Euclid's Algorithm",
+    "description": "EUCLID had a sick alg, brah! Look at it goooo brah! versions of the same problem. The subproblems are solved recursively, and their solutions ... divide and conquer is a recursive paradigm, the main tool for analyzing divide-and-conquer algorithms is induction. When it comes to complexity analysis, such algorithms generally give rise to recurrence relations expressing the time or space complexity. While these relations can be solved inductively, we usually rely on other tools to do so. We will see one such tool in the form of the master theorem.",
+    "componentID": "Euclid",
+    "status": "live",
+    "noteLink": "https://eecs376.github.io/notes/algorithms.html#divide-and-conquer",
+    "wikiLink": "https://en.wikipedia.org/wiki/Merge_sort"
   }
 ]

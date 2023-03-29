@@ -15,6 +15,7 @@ export { default as VisContainer } from "./VisContainer/VisContainer";
 export { default as ClosestPair } from "./ClosestPair/ClosestPair";
 export { default as MergeSort } from "./MergeSort/MergeSort";
 export { default as PotentialMethod } from "./PotentialMethod/PotentialMethod";
+export { default as Euclid } from "./Euclid/Euclid";
 
 // computability
 export { default as FiniteAutomata } from "./FiniteAutomata/FiniteAutomata";

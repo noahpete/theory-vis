@@ -13,7 +13,11 @@ const Menu = () => (
     <p>
       <Link to="/about">about</Link>
     </p>
-    <p>
+    <p
+      style={{
+        opacity: "50%",
+      }}
+    >
       <Link to="#search">search</Link>
     </p>
   </>
