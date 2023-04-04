@@ -6,6 +6,7 @@ export { default as Navbar } from "./Navbar/Navbar";
 
 // visualization components
 export { default as Bar } from "./Bar/Bar";
+export { default as Node } from "./Node/Node";
 export { default as Pseudocode } from "./Pseudocode/Pseudocode";
 export { default as VisContainer } from "./VisContainer/VisContainer";
 

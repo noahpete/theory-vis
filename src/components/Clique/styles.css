@@ -1,0 +1,9 @@
+.bar {
+  /* alignment */
+
+  transition: 0.2s all ease;
+}
+
+.bar-fade {
+  opacity: 0;
+}
