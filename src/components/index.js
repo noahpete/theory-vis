@@ -13,6 +13,7 @@ export { default as VisContainer } from "./VisContainer/VisContainer";
 // visualizations
 
 // algorithms
+export { default as Clique } from "./Clique/Clique";
 export { default as ClosestPair } from "./ClosestPair/ClosestPair";
 export { default as MergeSort } from "./MergeSort/MergeSort";
 export { default as PotentialMethod } from "./PotentialMethod/PotentialMethod";

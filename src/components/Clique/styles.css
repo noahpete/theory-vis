@@ -1,9 +1,43 @@
-.bar {
-  /* alignment */
-
-  transition: 0.2s all ease;
+.clique {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid saddlebrown;
 }
 
-.bar-fade {
-  opacity: 0;
+.clique-canvas-wrapper {
+  width: 100%;
+  flex: 4;
+
+  display: flex;
+
+  margin: auto;
+  border: 1px solid salmon;
+}
+
+.clique-equation {
+  display: flex;
+  padding: 4px;
+  margin-bottom: 0;
+  border: 1px solid sandybrown;
+}
+
+.clique-equation p {
+  margin: auto;
+}
+
+.clique-canvas {
+  width: 512px;
+  height: 256px;
+
+  margin: auto;
+
+  border: 1px solid seagreen;
+}
+
+.clique-controls-wrapper {
+  width: 100%;
+  flex: 1;
+  margin: auto;
+  border: 1px solid slateblue;
 }

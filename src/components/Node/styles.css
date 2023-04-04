@@ -1,0 +1,14 @@
+.node {
+  display: flex;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.node p {
+  margin: auto;
+  margin-top: 0.25em;
+}
+
+.node.pop {
+  transform: scale(1.5);
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "title": "Clique",
+    "description": "We are often interested in finding the maximal clique in a graph – for instance, if a graph represents a group of people and their individual friend relationships, we might want to find the largest set of mutual friends (hence the name “clique”).",
+    "componentID": "Clique",
+    "status": "live",
+    "noteLink": "https://eecs376.github.io/notes/complexity.html#clique",
+    "wikiLink": "https://en.wikipedia.org/wiki/Clique_problem"
+  }
+]

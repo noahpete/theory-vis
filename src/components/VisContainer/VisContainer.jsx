@@ -1,6 +1,7 @@
 import {
   PotentialMethod,
   ClosestPair,
+  Clique,
   MergeSort,
   DiffieHellman,
   FiniteAutomata,
@@ -19,6 +20,8 @@ const VisContainer = ({ vis }) => {
         return <FiniteAutomata />;
       case "ClosestPair":
         return <ClosestPair />;
+      case "Clique":
+        return <Clique />;
       case "Euclid":
         return <Euclid />;
       case "MergeSort":

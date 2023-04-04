@@ -1,6 +1,13 @@
 import React from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, About, Algorithms, Cryptography, Computability } from "./pages";
+import {
+  Home,
+  About,
+  Algorithms,
+  Cryptography,
+  Complexity,
+  Computability,
+} from "./pages";
 import { Navbar, Footer } from "./components";
 import "./index.css";
 
@@ -13,6 +20,7 @@ function App() {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/algorithms" element={<Algorithms />} />
         <Route exact path="/computability" element={<Computability />} />
+        <Route exact path="/complexity" element={<Complexity />} />
         <Route exact path="/cryptography" element={<Cryptography />} />
       </Routes>
       <Footer />
