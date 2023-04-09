@@ -1,192 +1,338 @@
 [
-    {
-        "id": 0,
-        "frameDesc": "Two parties, Alice and Bob, want to share a secret message (for example, a shared key), but can only communicate over an insecure channel.",
-        "lockA": {
-            "opacity": 0,
-            "x": 112,
-            "y": 126,
-            "isLocked": false
-        },
-        "lockB": {
-            "opacity": 0,
-            "x": 448,
-            "y": 126,
-            "isLocked": false
-        },
-        "paper": {
-            "opacity": 0,
-            "x": 97,
-            "y": 145,
-            "hiddenText": false
-        }
+  {
+    "id": 0,
+    "frameDesc": "",
+    "channel": {
+      "opacity": 0
     },
-    {
-        "id": 1,
-        "frameDesc": "Two parties, Alice and Bob, want to share a secret message (for example, a shared key), but can only communicate over an insecure channel.",
-        "lockA": {
-            "opacity": 0,
-            "x": 112,
-            "y": 106,
-            "isLocked": false
-        },
-        "lockB": {
-            "opacity": 0,
-            "x": 448,
-            "y": 126,
-            "isLocked": false
-        },
-        "paper": {
-            "x": 97,
-            "y": 120,
-            "hiddenText": false
-        }
+    "bucketG": {
+      "opacity": 0,
+      "x": 268,
+      "y": 60,
+      "color": "#FFFF92",
+      "liqlevel": "full"
     },
-    {
-        "id": 2,
-        "frameDesc": "Alice can 'lock' her message (i.e. the shared key) by encrypting it.",
-        "lockA": {
-            "opacity": 1,
-            "x": 112,
-            "y": 126,
-            "isLocked": true
-        },
-        "lockB": {
-            "opacity": 0,
-            "x": 448,
-            "y": 126,
-            "isLocked": false
-        },
-        "paper": {
-            "x": 97,
-            "y": 120,
-            "hiddenText": true
-        }
+    "bucketA": {
+      "opacity": 0,
+      "x": 100,
+      "y": 100,
+      "color": "aliceblue",
+      "liqLevel": 1
     },
-    {
-        "id": 3,
-        "frameDesc": "Alice then sends the message to Bob across the insecure channel.",
-        "lockA": {
-            "opacity": 1,
-            "x": 448,
-            "y": 126,
-            "isLocked": true
-        },
-        "lockB": {
-            "opacity": 0,
-            "x": 460,
-            "y": 116,
-            "isLocked": false
-        },
-        "paper": {
-            "x": 433,
-            "y": 120,
-            "hiddenText": true
-        }
+    "bucketB": {
+      "opacity": 0,
+      "x": 435,
+      "y": 130,
+      "color": "#FA8072",
+      "liqLevel": 1
     },
-    {
-        "id": 4,
-        "frameDesc": "Bob receives the message, but he cannot see its contents since he is unable to unlock Alice's lock. So, Bob locks the message with his own private key.",
-        "lockA": {
-            "opacity": 1,
-            "x": 438,
-            "y": 126,
-            "isLocked": true
-        },
-        "lockB": {
-            "opacity": 1,
-            "x": 460,
-            "y": 136,
-            "isLocked": true
-        },
-        "paper": {
-            "x": 433,
-            "y": 120,
-            "hiddenText": true
-        }
+    "bucketGA": {
+      "opacity": 0,
+      "x": 268,
+      "y": 60,
+      "color": "#FFFF92",
+      "liqlevel": "full"
     },
-    {
-        "id": 5,
-        "frameDesc": "Bob proceeds to send the doubly locked message back to to Alice.",
-        "lockA": {
-            "opacity": 1,
-            "x": 102,
-            "y": 126,
-            "isLocked": true
-        },
-        "lockB": {
-            "opacity": 1,
-            "x": 124,
-            "y": 136,
-            "isLocked": true
-        },
-        "paper": {
-            "x": 97,
-            "y": 120,
-            "hiddenText": true
-        }
-    },
-    {
-        "id": 6,
-        "frameDesc": "Alice, after receiving the doubly locked message, can unlock her own lock. However, Bob's lock is still obscuring the message contents.",
-        "lockA": {
-            "opacity": 0,
-            "x": 102,
-            "y": 106,
-            "isLocked": false
-        },
-        "lockB": {
-            "opacity": 1,
-            "x": 112,
-            "y": 126,
-            "isLocked": true
-        },
-        "paper": {
-            "x": 97,
-            "y": 120,
-            "hiddenText": true
-        }
-    },
-    {
-        "id": 7,
-        "frameDesc": "Alice then sends the message, still locked with Bob's lock, back to Bob.",
-        "lockA": {
-            "opacity": 0,
-            "x": 102,
-            "y": 106,
-            "isLocked": false
-        },
-        "lockB": {
-            "opacity": 1,
-            "x": 448,
-            "y": 126,
-            "isLocked": true
-        },
-        "paper": {
-            "x": 433,
-            "y": 120,
-            "hiddenText": true
-        }
-    },
-    {
-        "id": 8,
-        "frameDesc": "Bob can now unlock the message and can read its contents (i.e. Alice and Bob's shared key).",
-        "lockA": {
-            "opacity": 0,
-            "x": 100,
-            "y": 20,
-            "isLocked": false
-        },
-        "lockB": {
-            "opacity": 0,
-            "x": 448,
-            "y": 106,
-            "isLocked": false
-        },
-        "paper": {
-            "x": 433,
-            "y": 120,
-            "hiddenText": false
-        }
+    "bucketGB": {
+      "opacity": 0,
+      "x": 268,
+      "y": 60,
+      "color": "#FFFF92",
+      "liqlevel": "full"
     }
+  },
+  {
+    "id": 1,
+    "frameDesc": "Two parties, Alice and Bob, want to establish a secret (in this case: a secret color), but they can only communicate over an insecure channel.",
+    "channel": {
+      "opacity": 80
+    },
+    "bucketG": {
+      "opacity": 0,
+      "x": 268,
+      "y": 90,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 0,
+      "x": 100,
+      "y": 130,
+      "color": "aliceblue",
+      "liqLevel": 1
+    },
+    "bucketB": {
+      "opacity": 0,
+      "x": 435,
+      "y": 130,
+      "color": "#FA8072",
+      "liqLevel": 1
+    },
+    "bucketGA": {
+      "opacity": 0,
+      "x": 268,
+      "y": 90,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketGB": {
+      "opacity": 0,
+      "x": 268,
+      "y": 90,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    }
+  },
+  {
+    "id": 2,
+    "frameDesc": "To create a shared secret color, Alice and Bob first agree upon a public color that both of them, along with anyone else, can access.",
+    "channel": {
+      "opacity": 80
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 268,
+      "y": 115,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 0,
+      "x": 100,
+      "y": 120,
+      "color": "aliceblue",
+      "liqLevel": 1
+    },
+    "bucketB": {
+      "opacity": 0,
+      "x": 435,
+      "y": 120,
+      "color": "#FA8072",
+      "liqLevel": 1
+    },
+    "bucketGA": {
+      "opacity": 100,
+      "x": 268,
+      "y": 115,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketGB": {
+      "opacity": 100,
+      "x": 268,
+      "y": 115,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    }
+  },
+  {
+    "id": 3,
+    "frameDesc": "Alice and Bob each have their own secret color that they can contribute to the shared secret color.",
+    "channel": {
+      "opacity": 80
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 268,
+      "y": 115,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 100,
+      "y": 140,
+      "color": "aliceblue",
+      "liqLevel": 1
+    },
+    "bucketB": {
+      "opacity": 100,
+      "x": 435,
+      "y": 140,
+      "color": "#FA8072",
+      "liqLevel": 1
+    },
+    "bucketGA": {
+      "opacity": 100,
+      "x": 268,
+      "y": 115,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketGB": {
+      "opacity": 100,
+      "x": 268,
+      "y": 115,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    }
+  },
+  {
+    "id": 4,
+    "frameDesc": "Alice and Bob each mix their own secret color with the public color, obscuring their individual colors.",
+    "channel": {
+      "opacity": 80
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 268,
+      "y": 115,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 100,
+      "y": 140,
+      "color": "#7cdea8",
+      "liqLevel": 1
+    },
+    "bucketB": {
+      "opacity": 100,
+      "x": 435,
+      "y": 140,
+      "color": "#ebc12d",
+      "liqLevel": 1
+    },
+    "bucketGA": {
+      "opacity": 0,
+      "x": 100,
+      "y": 140,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketGB": {
+      "opacity": 0,
+      "x": 435,
+      "y": 140,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    }
+  },
+  {
+    "id": 5,
+    "frameDesc": "Alice and Bob then exchange their mixes over the insecure channel.",
+    "channel": {
+      "opacity": 80
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 268,
+      "y": 115,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 435,
+      "y": 140,
+      "color": "#7cdea8",
+      "liqLevel": 1
+    },
+    "bucketB": {
+      "opacity": 100,
+      "x": 100,
+      "y": 140,
+      "color": "#ebc12d",
+      "liqLevel": 1
+    },
+    "bucketGA": {
+      "opacity": 0,
+      "x": 100,
+      "y": 140,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketGB": {
+      "opacity": 0,
+      "x": 435,
+      "y": 140,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    }
+  },
+  {
+    "id": 6,
+    "frameDesc": "Finally, Alice adds her secret color to Bob's mix while Bob adds his secret color Alice's mix.",
+    "channel": {
+      "opacity": 80
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 268,
+      "y": 115,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 435,
+      "y": 140,
+      "color": "#806b2e",
+      "liqLevel": 1
+    },
+    "bucketB": {
+      "opacity": 100,
+      "x": 100,
+      "y": 140,
+      "color": "#806b2e",
+      "liqLevel": 1
+    },
+    "bucketGA": {
+      "opacity": 0,
+      "x": 100,
+      "y": 140,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketGB": {
+      "opacity": 0,
+      "x": 435,
+      "y": 140,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    }
+  },
+  {
+    "id": 7,
+    "frameDesc": "Alice and Bob now have a shared secret color! Note that at no point did the final secret color nor Alice or Bob's individual secret colors pass through the public space unobscured. Thus, their secrets remain secret!",
+    "channel": {
+      "opacity": 0
+    },
+    "bucketG": {
+      "opacity": 0,
+      "x": 268,
+      "y": 115,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 435,
+      "y": 140,
+      "color": "#806b2e",
+      "liqLevel": 1
+    },
+    "bucketB": {
+      "opacity": 100,
+      "x": 100,
+      "y": 140,
+      "color": "#806b2e",
+      "liqLevel": 1
+    },
+    "bucketGA": {
+      "opacity": 0,
+      "x": 100,
+      "y": 140,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketGB": {
+      "opacity": 0,
+      "x": 435,
+      "y": 140,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    }
+  }
 ]

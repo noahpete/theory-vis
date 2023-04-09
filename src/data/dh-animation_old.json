@@ -1,0 +1,319 @@
+[
+  {
+    "id": 0,
+    "frameDesc": "Two parties, Alice and Bob, want to share a secret message (for example, a shared key), but can only communicate over an insecure channel.",
+    "lockA": {
+      "opacity": 0,
+      "x": 112,
+      "y": 126,
+      "isLocked": false
+    },
+    "lockB": {
+      "opacity": 0,
+      "x": 448,
+      "y": 126,
+      "isLocked": false
+    },
+    "paper": {
+      "opacity": 0,
+      "x": 97,
+      "y": 145,
+      "hiddenText": false
+    },
+    "bucketG": {
+      "opacity": 0,
+      "x": 268,
+      "y": 60,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 0,
+      "x": 100,
+      "y": 100,
+      "color": "aliceblue",
+      "liqLevel": 1
+    }
+  },
+  {
+    "id": 1,
+    "frameDesc": "Two parties, Alice and Bob, want to share a secret message (for example, a shared key), but can only communicate over an insecure channel.",
+    "lockA": {
+      "opacity": 0,
+      "x": 112,
+      "y": 106,
+      "isLocked": false
+    },
+    "lockB": {
+      "opacity": 0,
+      "x": 448,
+      "y": 126,
+      "isLocked": false
+    },
+
+    "paper": {
+      "x": 97,
+      "y": 120,
+      "hiddenText": false
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 268,
+      "y": 90,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 100,
+      "y": 130,
+      "color": "aliceblue",
+      "liqLevel": 1
+    }
+  },
+  {
+    "id": 2,
+    "frameDesc": "Alice can 'lock' her message (i.e. the shared key) by encrypting it.",
+    "lockA": {
+      "opacity": 1,
+      "x": 112,
+      "y": 126,
+      "isLocked": true
+    },
+    "lockB": {
+      "opacity": 0,
+      "x": 448,
+      "y": 126,
+      "isLocked": false
+    },
+    "paper": {
+      "x": 97,
+      "y": 120,
+      "hiddenText": true
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 130,
+      "y": 250,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 112,
+      "y": 230,
+      "color": "aliceblue",
+      "liqLevel": 1
+    }
+  },
+  {
+    "id": 3,
+    "frameDesc": "Alice then sends the message to Bob across the insecure channel.",
+    "lockA": {
+      "opacity": 1,
+      "x": 448,
+      "y": 126,
+      "isLocked": true
+    },
+    "lockB": {
+      "opacity": 0,
+      "x": 460,
+      "y": 116,
+      "isLocked": false
+    },
+    "paper": {
+      "x": 433,
+      "y": 120,
+      "hiddenText": true
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 130,
+      "y": 250,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 112,
+      "y": 230,
+      "color": "aliceblue",
+      "liqLevel": 1
+    }
+  },
+  {
+    "id": 4,
+    "frameDesc": "Bob receives the message, but he cannot see its contents since he is unable to unlock Alice's lock. So, Bob locks the message with his own private key.",
+    "lockA": {
+      "opacity": 1,
+      "x": 438,
+      "y": 126,
+      "isLocked": true
+    },
+    "lockB": {
+      "opacity": 1,
+      "x": 460,
+      "y": 136,
+      "isLocked": true
+    },
+    "paper": {
+      "x": 433,
+      "y": 120,
+      "hiddenText": true
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 130,
+      "y": 250,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 112,
+      "y": 230,
+      "color": "aliceblue",
+      "liqLevel": 1
+    }
+  },
+  {
+    "id": 5,
+    "frameDesc": "Bob proceeds to send the doubly locked message back to to Alice.",
+    "lockA": {
+      "opacity": 1,
+      "x": 102,
+      "y": 126,
+      "isLocked": true
+    },
+    "lockB": {
+      "opacity": 1,
+      "x": 124,
+      "y": 136,
+      "isLocked": true
+    },
+    "paper": {
+      "x": 97,
+      "y": 120,
+      "hiddenText": true
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 130,
+      "y": 250,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 112,
+      "y": 230,
+      "color": "aliceblue",
+      "liqLevel": 1
+    }
+  },
+  {
+    "id": 6,
+    "frameDesc": "Alice, after receiving the doubly locked message, can unlock her own lock. However, Bob's lock is still obscuring the message contents.",
+    "lockA": {
+      "opacity": 0,
+      "x": 102,
+      "y": 106,
+      "isLocked": false
+    },
+    "lockB": {
+      "opacity": 1,
+      "x": 112,
+      "y": 126,
+      "isLocked": true
+    },
+    "paper": {
+      "x": 97,
+      "y": 120,
+      "hiddenText": true
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 130,
+      "y": 250,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 112,
+      "y": 230,
+      "color": "aliceblue",
+      "liqLevel": 1
+    }
+  },
+  {
+    "id": 7,
+    "frameDesc": "Alice then sends the message, still locked with Bob's lock, back to Bob.",
+    "lockA": {
+      "opacity": 0,
+      "x": 102,
+      "y": 106,
+      "isLocked": false
+    },
+    "lockB": {
+      "opacity": 1,
+      "x": 448,
+      "y": 126,
+      "isLocked": true
+    },
+    "paper": {
+      "x": 433,
+      "y": 120,
+      "hiddenText": true
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 130,
+      "y": 250,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 112,
+      "y": 230,
+      "color": "aliceblue",
+      "liqLevel": 1
+    }
+  },
+  {
+    "id": 8,
+    "frameDesc": "Bob can now unlock the message and can read its contents (i.e. Alice and Bob's shared key).",
+    "lockA": {
+      "opacity": 0,
+      "x": 100,
+      "y": 20,
+      "isLocked": false
+    },
+    "lockB": {
+      "opacity": 0,
+      "x": 448,
+      "y": 106,
+      "isLocked": false
+    },
+    "paper": {
+      "x": 433,
+      "y": 120,
+      "hiddenText": false
+    },
+    "bucketG": {
+      "opacity": 100,
+      "x": 130,
+      "y": 250,
+      "color": "#FFFF92",
+      "liqlevel": "full"
+    },
+    "bucketA": {
+      "opacity": 100,
+      "x": 112,
+      "y": 230,
+      "color": "aliceblue",
+      "liqLevel": 1
+    }
+  }
+]

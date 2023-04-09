@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Button } from "components";
-import Lock from "./Lock";
-import Paper from "./Paper";
+import Channel from "./Channel";
+import Bucket from "./Bucket";
 import "./styles.css";
 
 import Animation from "data/dh-animation.json";
 
 const DiffieHellman = () => {
   const FIRST_FRAME = 0;
-  const LAST_FRAME = 8;
+  const LAST_FRAME = Animation.length - 1;
 
   const [frame, setFrame] = useState(FIRST_FRAME);
   const [showControls, setShowControls] = useState(false);
@@ -33,25 +33,45 @@ const DiffieHellman = () => {
   return (
     <div className="dh-wrapper">
       <div className="dh-canvas">
-        <Paper
-          opacity={Animation[frame].paper.opacity}
-          x={Animation[frame].paper.x}
-          y={Animation[frame].paper.y}
-          textHidden={Animation[frame].paper.hiddenText}
+        <Channel opacity={Animation[frame].channel.opacity} />
+        <Bucket
+          opacity={Animation[frame].bucketG.opacity}
+          x={Animation[frame].bucketG.x}
+          y={Animation[frame].bucketG.y}
+          color={Animation[frame].bucketG.color}
+          liqLevel={Animation[frame].bucketG.liqLevel}
         />
-        <Lock
-          letter="A"
-          opacity={Animation[frame].lockA.opacity}
-          x={Animation[frame].lockA.x}
-          y={Animation[frame].lockA.y}
-          isLocked={Animation[frame].lockA.isLocked}
+
+        {/* alice and bob's buckets */}
+        <Bucket
+          opacity={Animation[frame].bucketA.opacity}
+          x={Animation[frame].bucketA.x}
+          y={Animation[frame].bucketA.y}
+          color={Animation[frame].bucketA.color}
+          liqLevel={Animation[frame].bucketA.liqLevel}
         />
-        <Lock
-          letter="B"
-          opacity={Animation[frame].lockB.opacity}
-          x={Animation[frame].lockB.x}
-          y={Animation[frame].lockB.y}
-          isLocked={Animation[frame].lockB.isLocked}
+        <Bucket
+          opacity={Animation[frame].bucketB.opacity}
+          x={Animation[frame].bucketB.x}
+          y={Animation[frame].bucketB.y}
+          color={Animation[frame].bucketB.color}
+          liqLevel={Animation[frame].bucketB.liqLevel}
+        />
+
+        {/* temp buckets */}
+        <Bucket
+          opacity={Animation[frame].bucketGA.opacity}
+          x={Animation[frame].bucketGA.x}
+          y={Animation[frame].bucketGA.y}
+          color={Animation[frame].bucketGA.color}
+          liqLevel={Animation[frame].bucketGA.liqLevel}
+        />
+        <Bucket
+          opacity={Animation[frame].bucketGB.opacity}
+          x={Animation[frame].bucketGB.x}
+          y={Animation[frame].bucketGB.y}
+          color={Animation[frame].bucketGB.color}
+          liqLevel={Animation[frame].bucketGB.liqLevel}
         />
         <div className="game-object alice">
           <p>Alice</p>
@@ -67,7 +87,7 @@ const DiffieHellman = () => {
           </div>
         </div>
         <div className="dh-frame-desc">
-          <p>
+          <p style={{ fontSize: "80%" }}>
             {frame ? frame : 1}: {Animation[frame].frameDesc}
           </p>
         </div>

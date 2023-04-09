@@ -100,6 +100,20 @@
   transform: translateY(-10px);
 }
 
+/* bucket */
+.bucket {
+  transition: all 1s ease;
+}
+
+.bucket path {
+  transition: all 1s ease;
+}
+
+/* channel */
+.channel {
+  transition: all 1s ease;
+}
+
 /* controls */
 .dh-controls-splash {
   width: 600px;
