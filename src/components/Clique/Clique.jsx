@@ -23,7 +23,7 @@ const Clique = ({}) => {
               </i>
             </p>
           </div>
-          <Node active={isActive} symbol="x" popColor="green"></Node>
+          <Node active={isActive} symbol="x" popColor="red"></Node>
           <Node active={isActive} symbol="y" popColor="green"></Node>
           <Node active={isActive} symbol="z" popColor="green"></Node>
         </div>
