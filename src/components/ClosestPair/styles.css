@@ -73,6 +73,7 @@
 
   /* styling */
   border-radius: 50%;
+  background-color: darkgray;
 
   /* alignment */
   position: absolute;
@@ -89,5 +90,67 @@
   }
   100% {
     transform: scale(100%);
+  }
+}
+
+.dot-visited,
+.dot-best {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.dot-visited {
+  background-color: #3a86ff;
+  animation-name: visitedAnimation;
+}
+
+.dot-best {
+  background-color: #ef233c;
+  animation-name: bestAnimation;
+}
+
+.dot-doi {
+  background-color: #ffbe0b;
+  animation-name: doiAnimation;
+}
+
+@keyframes visitedAnimation {
+  25% {
+    transform: scale(1.5);
+    background-color: rgba(64, 215, 232, 0.75);
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #3a86ff;
+  }
+}
+
+@keyframes bestAnimation {
+  25% {
+    transform: scale(1.5);
+    background-color: rgba(233, 82, 27, 0.75);
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #ef233c;
+  }
+}
+
+@keyframes doiAnimation {
+  25% {
+    transform: scale(1.5);
+    background-color: rgba(202, 255, 80, 0.75);
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #ffbe0b;
   }
 }
