@@ -20,10 +20,11 @@ class Bucket extends Component {
       >
         <svg
           width="66"
-          height="56"
+          height="56.5"
           viewBox="0 0 66 56"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          shapeRendering="auto"
         >
           <path
             d="M34 22.5C12.8 21.3 3.16667 26.3333 1 29V40.5C2 44.6667 9.5 53.4 31.5 55C53.5 56.6 63 46 65 40.5C65 37.5 66.5 31 65 29C63.5 27 60.5 24 34 22.5Z"
