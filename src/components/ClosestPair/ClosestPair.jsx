@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useInterval } from "react-use";
-import { select } from "d3";
+import { select, easeLinear } from "d3";
 import "./styles.css";
 
 const ClosestPair = () => {
@@ -8,9 +8,6 @@ const ClosestPair = () => {
   const canvasRef = useRef();
   const dimensions = { width: 320, height: 320 };
   const [dots, setDots] = useState();
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [iteration, setIteration] = useState(0);
-  const [steps, setSteps] = useState([]);
   const BEST_COLOR = "yellow";
 
   useEffect(() => {
@@ -26,99 +23,121 @@ const ClosestPair = () => {
       .attr("cx", (dot) => dot.x)
       .attr("cy", (dot) => dot.y)
       .transition()
+      .ease(easeLinear)
+      .delay((d, i) => i * 50)
       .attr("r", 5)
       .attr("fill", (dot) => dot.color);
   }, [dots]);
 
-  useInterval(() => {
-    if (iteration >= steps.length) return;
-
-    const dotId = steps[iteration].dotId;
-    if (isAnimating) {
-      if (dotId === "all") {
-        for (let i = 0; i < dots.length; i++) {
-          if (dots[i].color !== BEST_COLOR) {
-            colorDot(i, steps[iteration].color);
-          }
-        }
-      } else {
-        if (dots[dotId].color !== BEST_COLOR) {
-          colorDot(dotId, steps[iteration].color);
-        }
-      }
-    }
-    setIteration(iteration + 1);
-  }, 500);
-
-  function generateRandomDots(n = 10) {
+  const generateRandomDots = (n = 10) => {
+    select(svgRef.current).selectAll("line").remove();
     setDots([]);
-    setSteps([]);
     let newDots = [];
     for (let i = 0; i < n; ++i) {
       newDots[i] = {
         id: i,
         x: Math.random() * dimensions.width,
         y: Math.random() * dimensions.height,
-        color: "darkgray",
+        color: "black",
       };
     }
     setDots(newDots);
-  }
+  };
 
-  function colorDot(dotId, color) {
-    setDots((prevDots) =>
-      prevDots.map((dot) => {
-        if (dot.id === dotId) {
-          dot.color = color;
-          return {
-            ...dot,
-            color: color,
-          };
-        }
-        return dot;
-      })
-    );
-    // dot = dots.filter((dot) => dot.color === color);
-  }
+  const drawLine = (p1, p2, delay = 0, color = "black") => {
+    select(svgRef.current)
+      .append("line")
+      .attr("id", `${p1.x}-${p1.y}-${p2.x}-${p2.y}`)
+      .attr("x1", p1.x)
+      .attr("y1", p1.y)
+      .attr("x2", p1.x)
+      .attr("y2", p1.y)
+      .transition()
+      .duration(500)
+      .delay(delay)
+      .attr("x2", p2.x)
+      .attr("y2", p2.y)
+      .style("stroke", color);
+  };
 
-  function naiveClosestPair() {
-    setIsAnimating(false);
-    let newSteps = [];
+  const undrawLine = (id, delay) => {
+    const coords = id.split("-");
+    const dot1 = {
+      x: coords[0],
+      y: coords[1],
+    };
+    const dot2 = {
+      x: coords[2],
+      y: coords[3],
+    };
+    select(svgRef.current)
+      .select(id)
+      .attr("x2", dot2.x)
+      .attr("y2", dot2.y)
+      .transition()
+      .duration(500)
+      .delay(delay)
+      .attr("X2", dot1.x)
+      .attr("y2", dot1.y);
+  };
 
+  const naiveClosestPair = () => {
+    select(svgRef.current).selectAll("line").remove();
+    let skipCount = 0;
+    let bestCount = 0;
     let dMin = Infinity;
+    let bestId = "";
     for (let i = 0; i < dots.length; i++) {
-      newSteps.push({
-        dotId: "all",
-        color: "darkgray",
-      });
-      newSteps.push({
-        dotId: i,
-        color: "blue",
-      });
-      for (let j = i + 1; j < dots.length; j++) {
-        newSteps.push({
-          dotId: j,
-          color: "red",
-        });
-        const dx = Math.pow(dots[i].x - dots[j].x, 2);
-        const dy = Math.pow(dots[i].y - dots[j].y, 2);
+      for (let j = 0; j < dots.length; j++) {
+        if (i === j) {
+          skipCount += 1;
+          continue;
+        }
+        const dot1 = {
+          x: dots[i].x,
+          y: dots[i].y,
+        };
+        const dot2 = {
+          x: dots[j].x,
+          y: dots[j].y,
+        };
+        console.log(j + i * dots.length, dot1, dot2);
+        const dx = Math.pow(dot1.x - dot2.x, 2);
+        const dy = Math.pow(dot1.y - dot2.y, 2);
         const dist = Math.sqrt(dx + dy);
         if (dist < dMin) {
-          newSteps.push({
-            dotId: j,
-            color: BEST_COLOR,
-          });
           dMin = dist;
+          if (bestId !== "")
+            undrawLine(bestId, j - skipCount + bestCount * 2 + i * dots.length);
+          drawLine(
+            dot1,
+            dot2,
+            500 * (j - skipCount + bestCount * 2 + 1 + i * dots.length), // + 1 for bestId line above
+            BEST_COLOR
+          );
+          bestId = `${dot1.x}-${dot1.y}-${dot2.x}-${dot2.y}`;
+          bestCount += 1;
+        } else {
+          drawLine(
+            dot1,
+            dot2,
+            500 * (j - skipCount + bestCount * 2 + i * dots.length)
+          );
         }
       }
+      const lines = select(svgRef.current).selectAll("line");
+      select(svgRef.current)
+        .selectAll("line")
+        .filter(function () {
+          return this.getAttribute("stroke") !== BEST_COLOR;
+        })
+        .transition()
+        .delay(500 * ((i + 1) * dots.length - skipCount + bestCount - 0.2))
+        .on("end", () => {
+          lines.remove();
+        });
     }
-
-    setSteps(newSteps);
-    console.log(newSteps);
-    // reset animate properties
-    setIteration(0);
-    setIsAnimating(true);
-  }
+  };
 
   return (
     <div className="closest-pair">
