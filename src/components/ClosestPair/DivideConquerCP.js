@@ -24,9 +24,10 @@ export const getPointsRightOf = (points, val) => {
 
 export const getPointsInDeltaStrip = (points, m, delta) => {
   let strip = [];
-  // console.log("points", m, delta);
   for (let i = 0; i < points.length; ++i)
     if (Math.abs(points[i].x - m) <= delta) strip.push(points[i]);
+  console.log("strip", points, strip);
+
   return strip;
 };
 
@@ -42,7 +43,6 @@ export const bruteForceCP = (points) => {
       }
     }
   }
-  console.log("best", bestPoints, points);
   return bestPoints;
 };
 
@@ -51,9 +51,11 @@ export const getClosestPairInSet = (setOfPairs) => {
   let min = Infinity;
   let best = [];
   for (let i = 0; i < setOfPairs.length; ++i) {
+    if (setOfPairs[i].length < 2) continue;
     const points = setOfPairs[i];
     console.log(points);
     if (dist(points[0], points[1]) < min) {
+      console.log("__HERE__", min, points, dist(points[0], points[1]));
       min = dist(points[0], points[1]);
       best = points;
     }

@@ -103,6 +103,72 @@ const ClosestPair = () => {
       console.log(cur);
       switch (cur.action) {
         case "setM":
+          highlightCode("letm");
+          select(svgRef.current)
+            .append("line")
+            .attr("x1", cur.m)
+            .attr("y1", DIMENSIONS.height / 2)
+            .attr("x2", cur.m)
+            .attr("y2", DIMENSIONS.height / 2)
+            .lower()
+            .transition()
+            .duration(500)
+            .attr("y1", 0)
+            .attr("y2", DIMENSIONS.height)
+            .style("stroke", "black");
+          break;
+        case "selectLeft":
+          highlightCode("letL");
+          select(svgRef.current)
+            .append("rect")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", cur.m)
+            .attr("height", DIMENSIONS.height)
+            .attr("fill", HIGHLIGHT_COLOR)
+            .attr("opacity", 0)
+            .lower()
+            .transition()
+            .duration(150)
+            .attr("opacity", 1)
+            .transition()
+            .duration(350)
+            .attr("opacity", 0);
+          // .append("text")
+          // .text("L")
+          // .attr("id", "temp")
+          // .attr("x", cur.m)
+          // .attr("y", 25)
+          // .attr("opacity", 0)
+          // .transition()
+          // .duration(500)
+          // .attr("x", cur.m - 20)
+          // .attr("opacity", 1);
+          break;
+        case "selectRight":
+          highlightCode("letR");
+          select(svgRef.current)
+            .append("rect")
+            .attr("x", cur.m)
+            .attr("y", 0)
+            .attr("width", DIMENSIONS.height - cur.m)
+            .attr("height", DIMENSIONS.height)
+            .attr("fill", HIGHLIGHT_COLOR)
+            .attr("opacity", 0)
+            .lower()
+            .transition()
+            .duration(150)
+            .attr("opacity", 1)
+            .transition()
+            .duration(350)
+            .attr("opacity", 0);
+          break;
+        case "drawLine":
+          highlightCode(cur.code);
+          drawLine(cur.pair[0], cur.pair[1]);
+          break;
+        case "highlightLine":
+          highlightLine(cur.pair[0], cur.pair[1], "blue");
           break;
 
         case "end":
@@ -160,12 +226,12 @@ const ClosestPair = () => {
       .attr("y2", p2.y);
   };
 
-  const highlightLine = (p1, p2) => {
+  const highlightLine = (p1, p2, color = BEST_COLOR) => {
     select(svgRef.current)
       .selectAll("line[id='" + `${p1.id}${p2.id}` + "']")
       .transition()
       .duration(100)
-      .style("stroke", BEST_COLOR)
+      .style("stroke", color)
       .style("stroke-width", "5px")
       .transition()
       .ease(easeLinear)
@@ -175,7 +241,7 @@ const ClosestPair = () => {
         select(svgRef.current)
           .selectAll(`circle[id='${p1.id}'], circle[id='${p2.id}']`)
           .transition()
-          .style("stroke", "red");
+          .style("stroke", color);
       });
   };
 
@@ -242,29 +308,35 @@ const ClosestPair = () => {
     newSteps.push({ action: "setM", m: m });
 
     let l = getPointsLeftOf(points, m);
-    let lPts = dcUtil(l);
-    newSteps.push({ action: "selectLeft", left: l });
-    newSteps.push({ action: "highlightPair", pair: lPts });
-
     let r = getPointsRightOf(points, m);
+    newSteps.push({ action: "selectLeft", m: m, left: l });
+    newSteps.push({ action: "selectRight", m: m, right: r });
+
+    let lPts = dcUtil(l);
     let rPts = dcUtil(r);
-    newSteps.push({ action: "selectRight", right: r });
-    newSteps.push({ action: "highlightPair", pair: rPts });
+    newSteps.push({ action: "drawLine", code: "l1l2", pair: lPts });
+    newSteps.push({ action: "drawLine", code: "r1r2", pair: rPts });
 
     let deltaL = Math.abs(dist(lPts[0], lPts[1]));
     let deltaR = Math.abs(dist(rPts[0], rPts[1]));
     let delta = Math.min(deltaL, deltaR);
+    newSteps.push({ action: "highlightLine", pair: lPts });
+    newSteps.push({ action: "highlightLine", pair: rPts });
     newSteps.push({ action: "showDelta", delta });
 
     let strip = getPointsInDeltaStrip(points, m, delta);
     newSteps.push({ action: "showStrip", strip });
 
     let minFromStrip = bruteForceCP(strip);
-    newSteps.push({ action: "highlightPair", pair: minFromStrip });
+    if (minFromStrip.length > 0)
+      newSteps.push({
+        action: "drawLine",
+        code: "minStrip",
+        pair: minFromStrip,
+      });
 
-    // const closest = getClosestPairInSet([lPts, rPts, minFromStrip]);
-    const closest = [];
-    newSteps.push({ action: "highlightPair", pair: closest });
+    const closest = getClosestPairInSet([lPts, rPts, minFromStrip]);
+    newSteps.push({ action: "drawLine", code: "best", pair: closest });
     newSteps.push({ action: "end" });
 
     setSteps(newSteps);

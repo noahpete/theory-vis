@@ -39,18 +39,18 @@ const Pseudocode = (props) => {
         <div id="letm" className="cp-pseudo-line">
           <p>&emsp;m := median x-coord of points</p>
         </div>
-        <div className="cp-pseudo-line">
+        <div id="letL" className="cp-pseudo-line">
           <p>&emsp;L := points whose x-coord &le; m</p>
         </div>
-        <div className="cp-pseudo-line">
+        <div id="letR" className="cp-pseudo-line">
           <p>&emsp;R := points whose x-coord &gt; m</p>
         </div>
-        <div className="cp-pseudo-line">
+        <div id="l1l2" className="cp-pseudo-line">
           <p>
             &emsp;(l<sub>1</sub>, l<sub>2</sub>) := ClosestPair(L)
           </p>
         </div>
-        <div className="cp-pseudo-line">
+        <div id="r1r2" className="cp-pseudo-line">
           <p>
             &emsp;(r<sub>1</sub>, r<sub>2</sub>) := ClosestPair(R)
           </p>
@@ -73,10 +73,10 @@ const Pseudocode = (props) => {
         <div className="cp-pseudo-line">
           <p>&emsp;D := all points within &delta;-strip, sorted by y-coords</p>
         </div>
-        <div className="cp-pseudo-line">
+        <div id="minStrip" className="cp-pseudo-line">
           <p>&emsp;for each point in D, pair with 7 points below in D</p>
         </div>
-        <div className="cp-pseudo-line">
+        <div id="best" className="cp-pseudo-line">
           <p>
             &emsp;return closest pair among (l<sub>1</sub>, l<sub>2</sub>), (r
             <sub>1</sub>, r<sub>2</sub>), and D
