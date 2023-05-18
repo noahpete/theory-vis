@@ -1,12 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
-import { sleep } from "utils/utils";
 import { useInterval } from "react-use";
-import { select, easeLinear } from "d3";
+import { select, selectAll, easeLinear } from "d3";
+import {
+  dist,
+  getMedianXCoord,
+  getPointsLeftOf,
+  getPointsRightOf,
+  getPointsInDeltaStrip,
+  bruteForceCP,
+  minPtFromStrip,
+  getClosestPairInSet,
+} from "./DivideConquerCP";
+import Pseudocode from "./Pseudocode";
 import "./styles.css";
 
 const DIMENSIONS = { width: 320, height: 320 };
 const BEST_COLOR = "red";
 const HIGHLIGHT_COLOR = "rgb(184, 218, 255)";
+const ANIMATION_DURATION = 500;
 
 const ClosestPair = () => {
   const svgRef = useRef();
@@ -16,6 +27,7 @@ const ClosestPair = () => {
   const [dots, setDots] = useState();
   const [steps, setSteps] = useState([]);
   const [best, setBest] = useState();
+  const [algo, setAlgo] = useState("dc");
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -43,72 +55,79 @@ const ClosestPair = () => {
   useInterval(() => {
     if (!steps[0] || !isAnimating) return;
     const cur = steps[iteration];
-    switch (cur.action) {
-      case "compare":
-        select(`#${cur.action}`)
-          .style("background-color", HIGHLIGHT_COLOR)
-          .transition()
-          .duration(1500)
-          .style("background-color", "white");
-        drawLine(cur.p1, cur.p2);
-        break;
-      case "best":
-        select(`#${cur.action}`)
-          .style("background-color", HIGHLIGHT_COLOR)
-          .transition()
-          .duration(1500)
-          .style("background-color", "white");
-        if (best) {
+    if (algo === "naive") {
+      switch (cur.action) {
+        case "compare":
+          highlightCode(cur.action);
+          drawLine(cur.p1, cur.p2);
+          break;
+        case "best":
+          highlightCode(cur.action);
+          if (best) {
+            select(svgRef.current)
+              .selectAll("line[id='" + `${best.id}` + "']")
+              .lower()
+              .transition()
+              .duration(ANIMATION_DURATION)
+              .style("stroke", "black")
+              .style("stroke-width", "2px");
+            select(svgRef.current)
+              .selectAll(
+                `circle:not([id='${cur.p1.id}']):not([id='${cur.p2.id}'])`
+              )
+              .transition()
+              .duration(10)
+              .style("stroke", "black");
+          }
+          setBest({ id: `${cur.p1.id}${cur.p2.id}`, p1: cur.p1, p2: cur.p2 });
+          highlightLine(cur.p1, cur.p2);
+          break;
+        case "clear":
           select(svgRef.current)
-            .selectAll("line[id='" + `${best.id}` + "']")
-            .lower()
+            .selectAll(`line:not([id="${best.id}"])`)
             .transition()
-            .duration(500)
-            .style("stroke", "black")
-            .style("stroke-width", "2px");
-          select(svgRef.current)
-            .selectAll(
-              `circle:not([id='${cur.p1.id}']):not([id='${cur.p2.id}'])`
-            )
-            .transition()
-            .duration(100)
-            .style("stroke", "black");
-        }
-        setBest({ id: `${cur.p1.id}${cur.p2.id}`, p1: cur.p1, p2: cur.p2 });
-        highlightLine(cur.p1, cur.p2);
-        break;
-      case "clear":
-        select(svgRef.current)
-          .selectAll(`line:not([id="${best.id}"])`)
-          .transition()
-          .duration(500)
-          .style("opacity", "0.1");
-        break;
-      case "minequalsinf":
-      case "forp1":
-      case "forp2":
-        // select("cp-pseudo-line")
-        //   .style("background-color", "#FFF")
-        //   .transition()
-        //   .duration(500);
-        select(`#${cur.action}`)
-          .style("background-color", HIGHLIGHT_COLOR)
-          .transition()
-          .duration(1500)
-          .style("background-color", "white");
+            .duration(ANIMATION_DURATION)
+            .style("opacity", "0.1");
+          break;
+        case "minequalsinf":
+        case "forp1":
+        case "forp2":
+        case "end":
+          highlightCode(cur.action);
+          setIsAnimating(false);
+          break;
+        default:
+          break;
+      }
+    } else if (algo === "dc") {
+      console.log(cur);
+      switch (cur.action) {
+        case "setM":
+          break;
 
-      default:
-        break;
+        case "end":
+          setIsAnimating(false);
+          break;
+
+        default:
+          // setIsAnimating(false);
+          break;
+      }
     }
 
     setIteration(iteration + 1);
-  }, 600);
+  }, ANIMATION_DURATION + 100);
 
-  const generateRandomDots = (n = 10) => {
-    setIsAnimating(false);
+  const reset = () => {
     setIteration(0);
+    setIsAnimating(false);
     setSteps([]);
     setBest(undefined);
+    highlightCode("nil");
+  };
+
+  const generateRandomDots = (n = 10) => {
+    reset();
     setDots([]);
     let newDots = [];
     for (let i = 0; i < n; ++i) {
@@ -116,7 +135,6 @@ const ClosestPair = () => {
         id: i,
         x: Math.round(Math.random() * DIMENSIONS.width),
         y: Math.round(Math.random() * DIMENSIONS.height),
-        color: "black",
       };
     }
     setDots(newDots);
@@ -137,7 +155,7 @@ const ClosestPair = () => {
       .style("stroke-width", "2px")
       .style("opacity", "100%")
       .transition()
-      .duration(500)
+      .duration(ANIMATION_DURATION)
       .attr("x2", p2.x)
       .attr("y2", p2.y);
   };
@@ -157,87 +175,106 @@ const ClosestPair = () => {
         select(svgRef.current)
           .selectAll(`circle[id='${p1.id}'], circle[id='${p2.id}']`)
           .transition()
-          .duration(100)
           .style("stroke", "red");
       });
   };
 
-  const naiveClosestPair = async () => {
+  const highlightCode = (id) => {
+    selectAll(".cp-pseudo-line").style("background-color", "white");
+    selectAll(`#${id}`).style("background-color", HIGHLIGHT_COLOR);
+  };
+
+  const naiveClosestPair = (points) => {
+    if (!isAnimating && algo === "naive") reset();
     let newSteps = [];
     let dMin = Infinity;
-
     newSteps.push({
       action: "minequalsinf",
     });
-
-    for (let i = 0; i < dots.length; i++) {
+    for (let i = 0; i < points.length; i++) {
       newSteps.push({
         action: "forp1",
       });
-
-      for (let j = 0; j < dots.length; j++) {
+      for (let j = 0; j < points.length; j++) {
         if (i === j) continue;
         newSteps.push({
           action: "forp2",
         });
-
         newSteps.push({
-          p1: dots[i],
-          p2: dots[j],
+          p1: points[i],
+          p2: points[j],
           action: "compare",
         });
-
         const dist = Math.sqrt(
-          Math.pow(dots[i].x - dots[j].x, 2) +
-            Math.pow(dots[i].y - dots[j].y, 2)
+          Math.pow(points[i].x - points[j].x, 2) +
+            Math.pow(points[i].y - points[j].y, 2)
         );
         if (dist < dMin) {
           dMin = dist;
-
           newSteps.push({
-            p1: dots[i],
-            p2: dots[j],
+            p1: points[i],
+            p2: points[j],
             action: "best",
           });
         }
       }
-      newSteps.push({
-        action: "clear",
-      });
+      newSteps.push({ action: "clear" });
     }
-    setIsAnimating(true);
+    newSteps.push({ action: "end" });
     setSteps(newSteps);
+    setIsAnimating(true);
+  };
+
+  const dcUtil = (points) => {
+    // let m = getMedianXCoord(points);
+    // let l = getPointsLeftOf(points, m);
+    // let r = getPointsRightOf(points, m);
+    // let lPts = dcUtil(l);
+    // let rPts = dcUtil(r);
+    return bruteForceCP(points);
+  };
+
+  const dcClosestPair = (points) => {
+    if (!isAnimating && algo === "dc") reset();
+    let newSteps = [];
+
+    let m = getMedianXCoord(points);
+    newSteps.push({ action: "setM", m: m });
+
+    let l = getPointsLeftOf(points, m);
+    let lPts = dcUtil(l);
+    newSteps.push({ action: "selectLeft", left: l });
+    newSteps.push({ action: "highlightPair", pair: lPts });
+
+    let r = getPointsRightOf(points, m);
+    let rPts = dcUtil(r);
+    newSteps.push({ action: "selectRight", right: r });
+    newSteps.push({ action: "highlightPair", pair: rPts });
+
+    let deltaL = Math.abs(dist(lPts[0], lPts[1]));
+    let deltaR = Math.abs(dist(rPts[0], rPts[1]));
+    let delta = Math.min(deltaL, deltaR);
+    newSteps.push({ action: "showDelta", delta });
+
+    let strip = getPointsInDeltaStrip(points, m, delta);
+    newSteps.push({ action: "showStrip", strip });
+
+    let minFromStrip = bruteForceCP(strip);
+    newSteps.push({ action: "highlightPair", pair: minFromStrip });
+
+    // const closest = getClosestPairInSet([lPts, rPts, minFromStrip]);
+    const closest = [];
+    newSteps.push({ action: "highlightPair", pair: closest });
+    newSteps.push({ action: "end" });
+
+    setSteps(newSteps);
+    setIsAnimating(true);
   };
 
   return (
     <div className="closest-pair">
       <div className="cp-wrapper">
-        <div className="cp-pseudocode">
-          <div className="cp-pseudo-line">
-            <p>NaiveClosestPair(points):</p>
-          </div>
-          <div id="minequalsinf" className="cp-pseudo-line">
-            <p>&emsp;min := &infin;</p>
-          </div>
-          <div id="forp1" className="cp-pseudo-line">
-            <p>&emsp;for each point, p1, in points:</p>
-          </div>
-          <div id="forp2" className="cp-pseudo-line">
-            <p>&emsp;&emsp;for each other point, p2, in points:</p>
-          </div>
-          <div id="compare" className="cp-pseudo-line">
-            <p>&emsp;&emsp;&emsp;if distance between p1 and p2 &lt; min:</p>
-          </div>
-          <div id="best" className="cp-pseudo-line">
-            <p>&emsp;&emsp;&emsp;&emsp;min = distance between p1 and p2</p>
-          </div>
-          <div id="best" className="cp-pseudo-line">
-            <p>&emsp;&emsp;&emsp;&emsp;bestPair = (p1, p2)</p>
-          </div>
-          <div id="end" className="cp-pseudo-line">
-            <p>&emsp;return bestPair</p>
-          </div>
-        </div>
+        <Pseudocode algo={algo}></Pseudocode>
         <div className="cp-canvas" ref={canvasRef}>
           <svg ref={svgRef} style={{ width: 320, height: 320 }}></svg>
         </div>
@@ -247,7 +284,12 @@ const ClosestPair = () => {
           <button onClick={() => generateRandomDots(10)}>
             Generate Points
           </button>
-          <button onClick={() => naiveClosestPair()}>NaiveClosestPair</button>
+          <button onClick={() => naiveClosestPair(dots)}>
+            NaiveClosestPair
+          </button>
+          <button onClick={() => dcClosestPair(dots)}>
+            DivideConquerClosestPair
+          </button>
         </div>
       </div>
     </div>
