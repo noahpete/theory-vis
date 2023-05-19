@@ -94,10 +94,11 @@ const ClosestPair = () => {
         case "minequalsinf":
         case "forp1":
         case "forp2":
+          highlightCode(cur.action);
+          break;
         case "end":
           highlightCode(cur.action);
           setIsAnimating(false);
-          break;
         default:
           break;
       }
@@ -136,16 +137,6 @@ const ClosestPair = () => {
             .transition()
             .duration(350)
             .attr("opacity", 0);
-          // .append("text")
-          // .text("L")
-          // .attr("id", "temp")
-          // .attr("x", cur.m)
-          // .attr("y", 25)
-          // .attr("opacity", 0)
-          // .transition()
-          // .duration(500)
-          // .attr("x", cur.m - 20)
-          // .attr("opacity", 1);
           break;
         case "selectRight":
           highlightCode("letR");
@@ -270,7 +261,6 @@ const ClosestPair = () => {
           break;
       }
     }
-
     setIteration(iteration + 1);
   }, dur + 100);
 
@@ -281,6 +271,8 @@ const ClosestPair = () => {
     setBest(undefined);
     highlightCode("nil");
     selectAll("#temp").remove();
+    selectAll(".dot").style("stroke", "black");
+    selectAll("line").remove();
   };
 
   const generateRandomDots = (n = 10) => {
@@ -341,6 +333,7 @@ const ClosestPair = () => {
       .on("end", () => {
         select(svgRef.current)
           .selectAll(`circle[id='${p1.id}'], circle[id='${p2.id}']`)
+          .raise()
           .transition()
           .style("stroke", color);
       });
@@ -352,7 +345,8 @@ const ClosestPair = () => {
   };
 
   const naiveClosestPair = (points) => {
-    if (!isAnimating && algo === "naive") reset();
+    reset();
+    setAlgo("naive");
     let newSteps = [];
     let dMin = Infinity;
     newSteps.push({
@@ -402,7 +396,8 @@ const ClosestPair = () => {
   };
 
   const dcClosestPair = (points) => {
-    if (!isAnimating && algo === "dc") reset();
+    reset();
+    setAlgo("dc");
     let newSteps = [];
 
     let m = getMedianXCoord(points);
@@ -474,6 +469,10 @@ const ClosestPair = () => {
           <button onClick={() => generateRandomDots(10)}>
             Generate Points
           </button>
+          {/* <form>
+            <option value="Brute Force (Naive)"></option>
+            <option value="Divide and Conquer"></option>
+          </form> */}
           <button onClick={() => naiveClosestPair(dots)}>
             NaiveClosestPair
           </button>
