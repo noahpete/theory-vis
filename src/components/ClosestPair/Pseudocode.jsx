@@ -55,25 +55,25 @@ const Pseudocode = (props) => {
             &emsp;(r<sub>1</sub>, r<sub>2</sub>) := ClosestPair(R)
           </p>
         </div>
-        <div className="cp-pseudo-line">
+        <div id="dL" className="cp-pseudo-line">
           <p>
             &emsp;&delta;<sub>L</sub> := |l<sub>1</sub> - l<sub>2</sub>|
           </p>
         </div>
-        <div className="cp-pseudo-line">
+        <div id="dR" className="cp-pseudo-line">
           <p>
             &emsp;&delta;<sub>R</sub> := |r<sub>1</sub> - r<sub>2</sub>|
           </p>
         </div>
-        <div className="cp-pseudo-line">
+        <div id="delta" className="cp-pseudo-line">
           <p>
             &emsp;&delta; := min(&delta;<sub>L</sub>, &delta;<sub>R</sub>)
           </p>
         </div>
-        <div className="cp-pseudo-line">
+        <div id="minStrip" className="cp-pseudo-line">
           <p>&emsp;D := all points within &delta;-strip, sorted by y-coords</p>
         </div>
-        <div id="minStrip" className="cp-pseudo-line">
+        <div id="pair7" className="cp-pseudo-line">
           <p>&emsp;for each point in D, pair with 7 points below in D</p>
         </div>
         <div id="best" className="cp-pseudo-line">

@@ -28,6 +28,7 @@ const ClosestPair = () => {
   const [steps, setSteps] = useState([]);
   const [best, setBest] = useState();
   const [algo, setAlgo] = useState("dc");
+  const [dur, setDur] = useState(ANIMATION_DURATION);
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -56,6 +57,7 @@ const ClosestPair = () => {
     if (!steps[0] || !isAnimating) return;
     const cur = steps[iteration];
     if (algo === "naive") {
+      setDur(ANIMATION_DURATION);
       switch (cur.action) {
         case "compare":
           highlightCode(cur.action);
@@ -100,7 +102,7 @@ const ClosestPair = () => {
           break;
       }
     } else if (algo === "dc") {
-      console.log(cur);
+      setDur(ANIMATION_DURATION * 1.2);
       switch (cur.action) {
         case "setM":
           highlightCode("letm");
@@ -165,12 +167,100 @@ const ClosestPair = () => {
           break;
         case "drawLine":
           highlightCode(cur.code);
-          drawLine(cur.pair[0], cur.pair[1]);
+          if (cur.pair.length > 0) drawLine(cur.pair[0], cur.pair[1]);
           break;
         case "highlightLine":
+          highlightCode(cur.code);
           highlightLine(cur.pair[0], cur.pair[1], "blue");
           break;
-
+        case "showDelta":
+          highlightCode(cur.code);
+          select(`[id='${cur.pair[0].id}${cur.pair[1].id}'`)
+            .clone()
+            .raise()
+            .transition()
+            .duration(1000)
+            .style("stroke", "darkgray")
+            .attr("x1", cur.m)
+            .attr("y1", DIMENSIONS.height / 2)
+            .attr("x2", cur.m - cur.dist)
+            .attr("y2", DIMENSIONS.height / 2)
+            .transition()
+            .duration(500)
+            .style("opacity", 0);
+          break;
+        case "showStrip":
+          highlightCode("minStrip");
+          select(svgRef.current)
+            .append("rect")
+            .lower()
+            .attr("id", "temp")
+            .attr("x", cur.m)
+            .attr("y", 0)
+            .attr("width", 0)
+            .attr("height", DIMENSIONS.height)
+            .style("fill", "white")
+            .transition()
+            .duration(500)
+            .attr("x", cur.m - cur.delta)
+            .attr("width", 2 * cur.delta)
+            .style("fill", HIGHLIGHT_COLOR);
+          select(svgRef.current)
+            .append("text")
+            .text("δ")
+            .attr("id", "temp")
+            .attr("x", cur.m)
+            .attr("y", 25)
+            .attr("opacity", 0)
+            .transition()
+            .duration(500)
+            .attr("x", cur.m - (cur.delta / 2 + 5))
+            .attr("opacity", 1);
+          select(svgRef.current)
+            .append("text")
+            .text("δ")
+            .attr("id", "temp")
+            .attr("x", cur.m)
+            .attr("y", 25)
+            .attr("opacity", 0)
+            .transition()
+            .duration(500)
+            .attr("x", cur.m + (cur.delta / 2 - 5))
+            .attr("opacity", 1);
+          break;
+        case "pair7":
+          highlightCode(cur.code);
+          let dots = selectAll(".dot").filter(function (d) {
+            var x = select(this).attr("cx");
+            return x >= cur.m - cur.delta && x <= cur.m + cur.delta;
+          });
+          dots = dots._groups[0];
+          if (dots.length > 1) {
+            for (let i = 0; i < dots.length; ++i) {
+              for (let j = i + 1; j < dots.length; ++j) {
+                drawLine(
+                  {
+                    id: dots[i].getAttribute("id"),
+                    x: dots[i].getAttribute("cx"),
+                    y: dots[i].getAttribute("cy"),
+                  },
+                  {
+                    id: dots[j].getAttribute("id"),
+                    x: dots[j].getAttribute("cx"),
+                    y: dots[j].getAttribute("cy"),
+                  },
+                  "black",
+                  "raise"
+                );
+              }
+            }
+            selectAll(".dot").raise();
+          }
+          break;
+        case "best":
+          highlightCode(cur.code);
+          highlightLine(cur.pair[0], cur.pair[1]);
+          break;
         case "end":
           setIsAnimating(false);
           break;
@@ -182,7 +272,7 @@ const ClosestPair = () => {
     }
 
     setIteration(iteration + 1);
-  }, ANIMATION_DURATION + 100);
+  }, dur + 100);
 
   const reset = () => {
     setIteration(0);
@@ -190,6 +280,7 @@ const ClosestPair = () => {
     setSteps([]);
     setBest(undefined);
     highlightCode("nil");
+    selectAll("#temp").remove();
   };
 
   const generateRandomDots = (n = 10) => {
@@ -208,11 +299,10 @@ const ClosestPair = () => {
     select(svgRef.current).selectAll("circle").style("stroke", "black");
   };
 
-  const drawLine = (p1, p2, color = "black") => {
-    select(svgRef.current)
+  const drawLine = (p1, p2, color = "black", depth = "lower") => {
+    const line = select(svgRef.current)
       .append("line")
       .attr("id", `${p1.id}${p2.id}`)
-      .lower()
       .attr("x1", p1.x)
       .attr("y1", p1.y)
       .attr("x2", p1.x)
@@ -224,6 +314,17 @@ const ClosestPair = () => {
       .duration(ANIMATION_DURATION)
       .attr("x2", p2.x)
       .attr("y2", p2.y);
+
+    if (depth === "raise") {
+      const svgNode = svgRef.current;
+      const lineNode = line.node();
+      svgNode.appendChild(lineNode); // Move line to the end of the SVG
+    } else if (depth === "lower") {
+      const svgNode = svgRef.current;
+      const firstChild = svgNode.firstChild;
+      const lineNode = line.node();
+      svgNode.insertBefore(lineNode, firstChild); // Move line to the beginning of the SVG
+    }
   };
 
   const highlightLine = (p1, p2, color = BEST_COLOR) => {
@@ -320,23 +421,40 @@ const ClosestPair = () => {
     let deltaL = Math.abs(dist(lPts[0], lPts[1]));
     let deltaR = Math.abs(dist(rPts[0], rPts[1]));
     let delta = Math.min(deltaL, deltaR);
-    newSteps.push({ action: "highlightLine", pair: lPts });
-    newSteps.push({ action: "highlightLine", pair: rPts });
-    newSteps.push({ action: "showDelta", delta });
+    newSteps.push({ action: "highlightLine", code: "dL", pair: lPts });
+    newSteps.push({ action: "highlightLine", code: "dR", pair: rPts });
 
-    let strip = getPointsInDeltaStrip(points, m, delta);
-    newSteps.push({ action: "showStrip", strip });
-
-    let minFromStrip = bruteForceCP(strip);
-    if (minFromStrip.length > 0)
+    if (deltaL < deltaR)
       newSteps.push({
-        action: "drawLine",
-        code: "minStrip",
-        pair: minFromStrip,
+        action: "showDelta",
+        code: "delta",
+        m: m,
+        dist: deltaL,
+        pair: lPts,
+      });
+    else
+      newSteps.push({
+        action: "showDelta",
+        code: "delta",
+        m: m,
+        dist: deltaR,
+        pair: rPts,
       });
 
+    let strip = getPointsInDeltaStrip(points, m, delta);
+    newSteps.push({ action: "showStrip", pts: strip, m: m, delta: delta });
+
+    let minFromStrip = bruteForceCP(strip);
+    newSteps.push({
+      action: "pair7",
+      code: "pair7",
+      m: m,
+      delta: delta,
+      pair: minFromStrip,
+    });
+
     const closest = getClosestPairInSet([lPts, rPts, minFromStrip]);
-    newSteps.push({ action: "drawLine", code: "best", pair: closest });
+    newSteps.push({ action: "best", code: "best", pair: closest });
     newSteps.push({ action: "end" });
 
     setSteps(newSteps);
